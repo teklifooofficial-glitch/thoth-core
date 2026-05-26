@@ -10,13 +10,13 @@ cd "${ROOT}"
 ./contrib/install_db4.sh "${ROOT}"
 
 ./autogen.sh
-./configure --with-gui \
+./configure --with-gui --without-incompatible-bdb \
   BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8 -ldb-4.8" \
   BDB_CFLAGS="-I${BDB_PREFIX}/include" \
   CPPFLAGS="-I${BDB_PREFIX}/include" \
   LDFLAGS="-L${BDB_PREFIX}/lib"
 
-make -j"$(nproc)" -C src thothd thoth-cli thoth-wallet
+make -j"$(nproc)" -C src thothd thoth-cli thoth-wallet qt/thoth-qt
 
 echo
 echo "Wallet build complete. Verify:"

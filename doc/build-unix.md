@@ -174,32 +174,32 @@ Wallet creation segfaults with Arch `db` 6.2. Use this for `thothd` / `thoth-cli
     ./configure --without-gui --with-incompatible-bdb
     make -j$(nproc)
 
-**Profile B — working wallet (`thoth-wallet`, `createwallet`, `getnewaddress`)**
+**Wallet build — working wallet + GUI (Berkeley DB 4.8)**
 
-Build Berkeley DB 4.8 into `db4/` (not `depends/`):
+System `db` 6.2 breaks wallet creation; build BDB 4.8 into `db4/` first (skip if
+`db4/lib/libdb_cxx-4.8.a` already exists):
 
     ./contrib/install_db4.sh "$(pwd)"
 
-Or run the helper script (installs db4, reconfigures, builds wallet binaries):
+Or: `./contrib/build_wallet_arch.sh` (installs db4 and builds `thothd`, `thoth-cli`, `thoth-wallet`).
 
-    ./contrib/build_wallet_arch.sh
-
-Manual reconfigure after `install_db4.sh` (do **not** pass `--with-incompatible-bdb`):
+Reconfigure with **BDB 4.8** and **without** `--with-incompatible-bdb`:
 
     export BDB_PREFIX="$(pwd)/db4"
     ./autogen.sh
-    ./configure --with-gui \
+    ./configure --with-gui --without-incompatible-bdb \
       BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8 -ldb-4.8" \
       BDB_CFLAGS="-I${BDB_PREFIX}/include" \
       CPPFLAGS="-I${BDB_PREFIX}/include" \
       LDFLAGS="-L${BDB_PREFIX}/lib"
-    make -j$(nproc) -C src thothd thoth-cli thoth-wallet
+    make -j$(nproc) -C src thoth-wallet qt/thoth-qt
 
-Verify:
+Verify (offline wallet tool and regtest RPC):
 
     ./src/thoth-wallet -wallet=test create
-    ./src/thothd -daemon -wallet=test
-    ./src/thoth-cli -rpcwallet=test getnewaddress
+    ./src/thothd -regtest -daemon -wallet=test
+    ./src/thoth-cli -regtest -rpcwallet=test getnewaddress
+    ./src/thoth-cli -regtest stop
 
 This tree already includes Arch/CachyOS compatibility fixes: `build-aux/m4/ax_boost_system.m4` (Boost ≥1.69), `src/net.cpp` (miniUPnPc ≥18), `src/wallet/bdb.cpp` and `src/wallet/walletutil.cpp` (Boost.Filesystem API). `contrib/install_db4.sh` adds Linux fixes for BDB 4.8 (config.guess redirect, `x86_64/gcc-assembly` mutex, GCC 15 implicit-int).
 
