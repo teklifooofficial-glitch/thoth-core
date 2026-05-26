@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2026 The Litecoin Core developers
+# Copyright (c) 2026 The Thoth Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test duplicate canonical pegins for the same MWEB kernel."""
@@ -9,7 +9,7 @@ from test_framework.blocktools import (
     add_witness_commitment,
     create_coinbase,
 )
-from test_framework.ltc_util import create_hogex, setup_mweb_chain
+from test_framework.tth_util import create_hogex, setup_mweb_chain
 from test_framework.messages import (
     COIN,
     CBlock,
@@ -140,7 +140,7 @@ class MWEBDuplicatePeginTest(BitcoinTestFramework):
         self.log.info("Activate MWEB")
         setup_mweb_chain(node)
 
-        self.log.info("Create an LTC-only pegin source with one small confirmed coin")
+        self.log.info("Create an TTH-only pegin source with one small confirmed coin")
         node.createwallet(wallet_name="pegin_source")
         pegin_source = node.get_wallet_rpc("pegin_source")
         miner.sendtoaddress(pegin_source.getnewaddress(address_type="legacy"), 3)

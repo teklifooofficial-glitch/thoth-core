@@ -98,6 +98,12 @@ AC_DEFUN([AX_BOOST_SYSTEM],
                                  [link_system="no"])
 				done
                 fi
+                if test "x$link_system" != "xyes"; then
+                    dnl Boost >= 1.69: boost::system is header-only (no libboost_system)
+                    BOOST_SYSTEM_LIB=""
+                    AC_SUBST(BOOST_SYSTEM_LIB)
+                    link_system="yes"
+                fi
 
             else
                for ax_lib in $ax_boost_user_system_lib boost_system-$ax_boost_user_system_lib; do
@@ -107,12 +113,9 @@ AC_DEFUN([AX_BOOST_SYSTEM],
                   done
 
             fi
-            if test "x$ax_lib" = "x"; then
+            if test "x$link_system" != "xyes"; then
                 AC_MSG_ERROR(Could not find a version of the Boost::System library!)
             fi
-			if test "x$link_system" = "xno"; then
-				AC_MSG_ERROR(Could not link against $ax_lib !)
-			fi
 		fi
 
 		CPPFLAGS="$CPPFLAGS_SAVED"

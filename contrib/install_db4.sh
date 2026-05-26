@@ -12,7 +12,7 @@ if [ -z "${1}" ]; then
   echo "Usage: $0 <base-dir> [<extra-bdb-configure-flag> ...]"
   echo
   echo "Must specify a single argument: the directory in which db4 will be built."
-  echo "This is probably \`pwd\` if you're at the root of the litecoin repository."
+  echo "This is probably \`pwd\` if you're at the root of the thoth repository."
   exit 1
 fi
 
@@ -54,9 +54,9 @@ http_get() {
   if [ -f "${2}" ]; then
     echo "File ${2} already exists; not downloading again"
   elif check_exists curl; then
-    curl --insecure --retry 5 "${1}" -o "${2}"
+    curl -L --insecure --retry 5 "${1}" -o "${2}"
   else
-    wget --no-check-certificate "${1}" -O "${2}"
+    wget --no-check-certificate -O "${2}" "${1}"
   fi
 
   sha256_check "${3}" "${2}"
@@ -66,6 +66,9 @@ mkdir -p "${BDB_PREFIX}"
 http_get "${BDB_URL}" "${BDB_VERSION}.tar.gz" "${BDB_HASH}"
 tar -xzvf ${BDB_VERSION}.tar.gz -C "$BDB_PREFIX"
 cd "${BDB_PREFIX}/${BDB_VERSION}/"
+
+# GCC 15+ rejects implicit-int in autoconf mutex probes (see Debian #1084782).
+sed -i 's/^main()/int main(void)/g' dist/aclocal/mutex.m4
 
 # Apply a patch necessary when building with clang and c++11 (see https://community.oracle.com/thread/3952592)
 CLANG_CXX11_PATCH_URL='https://gist.githubusercontent.com/LnL7/5153b251fd525fe15de69b67e63a6075/raw/7778e9364679093a32dec2908656738e16b6bdcb/clang.patch'
@@ -89,17 +92,36 @@ http_get "${CONFIG_SUB_URL}" dist/config.sub "${CONFIG_SUB_HASH}"
 
 cd build_unix/
 
-"${BDB_PREFIX}/${BDB_VERSION}/dist/configure" \
-  --enable-cxx --disable-shared --disable-replication --with-pic --prefix="${BDB_PREFIX}" \
+# fcntl mutexes were removed in BDB 4.8. On x86_64 Linux, use gcc assembly mutexes
+# (POSIX probes fail with GCC 15+ implicit-int / link quirks).
+bdb_configure_flags="--enable-cxx --disable-shared --disable-replication --with-pic --prefix=${BDB_PREFIX}"
+case $(uname -s)-$(uname -m) in
+  Linux-x86_64|Linux-amd64) bdb_configure_flags="${bdb_configure_flags} --with-mutex=x86_64/gcc-assembly" ;;
+  Linux-*) bdb_configure_flags="${bdb_configure_flags} --enable-posixmutexes" ;;
+esac
+
+LIBS=-lpthread CFLAGS="${CFLAGS:--O2} -Wno-error=implicit-function-declaration" \
+  CXXFLAGS="${CXXFLAGS:--O2} -Wno-error=implicit-function-declaration" \
+  "${BDB_PREFIX}/${BDB_VERSION}/dist/configure" \
+  ${bdb_configure_flags} \
   "${@}"
 
-make install
+build_dir="${BDB_PREFIX}/${BDB_VERSION}/build_unix"
+make -C "${build_dir}" -j"$(nproc)" libdb-4.8.la libdb_cxx-4.8.la
+
+mkdir -p "${BDB_PREFIX}/lib" "${BDB_PREFIX}/include"
+# libtool install of libdb_cxx-4.8.a is broken on some hosts; pack objects manually.
+ar crs "${BDB_PREFIX}/lib/libdb_cxx-4.8.a" "${build_dir}"/*.o
+ranlib "${BDB_PREFIX}/lib/libdb_cxx-4.8.a"
+cp -p "${build_dir}/.libs/libdb-4.8.a" "${BDB_PREFIX}/lib/"
+cp -p "${build_dir}/db.h" "${build_dir}/db_cxx.h" "${BDB_PREFIX}/include/"
+test -f "${build_dir}/db_config.h" && cp -p "${build_dir}/db_config.h" "${BDB_PREFIX}/include/"
 
 echo
 echo "db4 build complete."
 echo
 # shellcheck disable=SC2016
-echo 'When compiling litecoind, run `./configure` in the following way:'
+echo 'When compiling thothd, run `./configure` in the following way:'
 echo
 echo "  export BDB_PREFIX='${BDB_PREFIX}'"
 # shellcheck disable=SC2016

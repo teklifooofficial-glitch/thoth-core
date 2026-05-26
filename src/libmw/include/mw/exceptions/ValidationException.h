@@ -1,6 +1,6 @@
 #pragma once
 
-#include <mw/exceptions/LTCException.h>
+#include <mw/exceptions/TTHException.h>
 #include <mw/util/StringUtil.h>
 
 #define ThrowValidation(type) throw ValidationException(type, __FUNCTION__)
@@ -25,11 +25,11 @@ enum class EConsensusError
     BAD_STATE
 };
 
-class ValidationException : public LTCException
+class ValidationException : public TTHException
 {
 public:
     ValidationException(const EConsensusError& type, const std::string& function)
-        : LTCException("ValidationException", GetMessage(type), function)
+        : TTHException("ValidationException", GetMessage(type), function)
     {
 
     }

@@ -1,36 +1,84 @@
-Litecoin Core integration/staging tree
+Thoth Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/litecoin-project/litecoin.svg?branch=master)](https://travis-ci.org/litecoin-project/litecoin)
+[![Build Status](https://travis-ci.org/thoth-project/thoth.svg?branch=master)](https://travis-ci.org/thoth-project/thoth)
 
-https://litecoin.org
+https://thoth.org
 
-What is Litecoin?
+What is Thoth?
 ----------------
 
-Litecoin is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. Litecoin uses peer-to-peer technology to operate
+Thoth is an experimental digital currency that enables instant payments to
+anyone, anywhere in the world. Thoth uses peer-to-peer technology to operate
 with no central authority: managing transactions and issuing money are carried
-out collectively by the network. Litecoin Core is the name of open source
+out collectively by the network. Thoth Core is the name of open source
 software which enables the use of this currency.
 
 For more information, as well as an immediately useable, binary version of
-the Litecoin Core software, see [https://litecoin.org](https://litecoin.org).
+the Thoth Core software, see [https://thoth.org](https://thoth.org).
+
+Quick start
+-----------
+
+Thoth (TTH) is a Litecoin-derived full node: Scrypt proof-of-work, 2.5-minute
+block target, and bech32 prefix `tth` on mainnet. Binaries: `thothd`, `thoth-cli`,
+`thoth-qt`, `thoth-wallet`, `thoth-tx`.
+
+**Build** (from repository root):
+
+    ./autogen.sh
+    ./configure --with-gui --with-incompatible-bdb
+    make -j$(nproc)
+
+On Arch/CachyOS, install deps with `pacman` and use `--with-incompatible-bdb` for the
+system Berkeley DB; see [doc/build-unix.md](doc/build-unix.md#arch-linux--cachyos).
+
+**Wallet on Arch:** linking against BDB 6.2 can segfault wallet creation. Either build
+BDB 4.8 with `./contrib/install_db4.sh $(pwd)` and reconfigure with `BDB_LIBS` /
+`BDB_CFLAGS`, or mine with `generatetoaddress` to any valid address (no loaded wallet).
+
+**Regtest** (`~/.thoth/regtest/`):
+
+    ./src/thothd -regtest -daemon
+    ADDR=$(./src/thoth-cli -regtest getnewaddress)   # if wallet works
+    ./src/thoth-cli -regtest generatetoaddress 2 "$ADDR" 1000000
+
+**Mainnet isolated** (no peers; put `connect=0` and `dnsseed=0` under `[main]` in
+`~/.thoth/thoth.conf`):
+
+    ./src/thothd -daemon
+    ./src/thoth-cli generatetoaddress 1 "<addr>" 1000000
+
+**Testnet** (datadir `~/.thoth/testnet4/`; use `[test]` in config for ports):
+
+    ./src/thothd -testnet -daemon
+    ./src/thoth-cli -testnet generatetoaddress 1 "<addr>" 5000000
+
+Genesis block hashes: mainnet
+`3f2dc0f6de03c28bef702416f12688fef4157f92215312ace07a5946a1eb8784`; testnet
+`439581a39f5f59930cf3e349b9aca7c483586160df898fa87b10d278c2515651`; regtest
+`b6ae6fa79bdde8d750bc8dff1e1a0f053dc45422a11f100d57623143fc0e1381`.
+
+| Network  | RPC port | P2P port | Data directory        |
+|----------|----------|----------|------------------------|
+| Mainnet  | 19332    | 19333    | `~/.thoth/`            |
+| Testnet  | 29332    | 29335    | `~/.thoth/testnet4/`   |
+| Regtest  | 19443    | 19444    | `~/.thoth/regtest/`    |
 
 License
 -------
 
-Litecoin Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Thoth Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
 -------------------
 
 The `master` branch is regularly built (see `doc/build-*.md` for instructions) and tested, but it is not guaranteed to be
-completely stable. [Tags](https://github.com/litecoin-project/litecoin/tags) are created
-regularly from release branches to indicate new official, stable release versions of Litecoin Core.
+completely stable. [Tags](https://github.com/thoth-project/thoth/tags) are created
+regularly from release branches to indicate new official, stable release versions of Thoth Core.
 
-The https://github.com/litecoin-project/gui repository is used exclusively for the
+The https://github.com/thoth-project/gui repository is used exclusively for the
 development of the GUI. Its master branch is identical in all monotree
 repositories. Release branches and tags do not exist, so please do not fork
 that repository unless it is for development reasons.
@@ -38,11 +86,11 @@ that repository unless it is for development reasons.
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md)
 and useful hints for developers can be found in [doc/developer-notes.md](doc/developer-notes.md).
 
-The developer [mailing list](https://groups.google.com/forum/#!forum/litecoin-dev)
+The developer [mailing list](https://groups.google.com/forum/#!forum/thoth-dev)
 should be used to discuss complicated or controversial changes before working
 on a patch set.
 
-Developer IRC can be found on Freenode at #litecoin-dev.
+Developer IRC can be found on Freenode at #thoth-dev.
 
 Testing
 -------
@@ -76,7 +124,7 @@ Translations
 ------------
 
 We only accept translation fixes that are submitted through [Bitcoin Core's Transifex page](https://explore.transifex.com/bitcoin/bitcoin/).
-Translations are converted to Litecoin periodically.
+Translations are converted to Thoth periodically.
 
 Translations are periodically pulled from Transifex and merged into the git repository. See the
 [translation process](doc/translation_process.md) for details on how this works.

@@ -1,12 +1,12 @@
 UNIX BUILD NOTES
 ====================
-Some notes on how to build Litecoin Core in Unix.
+Some notes on how to build Thoth Core in Unix.
 
 (For BSD specific instructions, see `build-*bsd.md` in this directory.)
 
 Note
 ---------------------
-Always use absolute paths to configure and compile Litecoin Core and the dependencies.
+Always use absolute paths to configure and compile Thoth Core and the dependencies.
 For example, when specifying the path of the dependency:
 
 	../dist/configure --enable-cxx --disable-shared --with-pic --prefix=$BDB_PREFIX
@@ -24,7 +24,7 @@ make
 make install # optional
 ```
 
-This will build litecoin-qt as well, if the dependencies are met.
+This will build thoth-qt as well, if the dependencies are met.
 
 Dependencies
 ---------------------
@@ -54,7 +54,7 @@ Memory Requirements
 --------------------
 
 C++ compilers are memory-hungry. It is recommended to have at least 1.5 GB of
-memory available when compiling Litecoin Core. On systems with less, gcc can be
+memory available when compiling Thoth Core. On systems with less, gcc can be
 tuned to conserve memory with additional CXXFLAGS:
 
 
@@ -96,7 +96,7 @@ SQLite is required for the wallet:
 
     sudo apt install libsqlite3-dev
 
-To build Litecoin Core without wallet, see [*Disable-wallet mode*](/doc/build-unix.md#disable-wallet-mode)
+To build Thoth Core without wallet, see [*Disable-wallet mode*](/doc/build-unix.md#disable-wallet-mode)
 
 
 Optional (see `--with-miniupnpc` and `--enable-upnp-default`):
@@ -109,7 +109,7 @@ ZMQ dependencies (provides ZMQ API):
 
 GUI dependencies:
 
-If you want to build litecoin-qt, make sure that the required packages for Qt development
+If you want to build thoth-qt, make sure that the required packages for Qt development
 are installed. Qt 5 is necessary to build the GUI.
 To build without GUI pass `--without-gui`.
 
@@ -121,7 +121,7 @@ libqrencode (optional) can be installed with:
 
     sudo apt-get install libqrencode-dev
 
-Once these are installed, they will be found by configure and a litecoin-qt executable will be
+Once these are installed, they will be found by configure and a thoth-qt executable will be
 built by default.
 
 
@@ -153,9 +153,59 @@ SQLite can be installed with:
 
     sudo dnf install sqlite-devel
 
+
+### Arch Linux / CachyOS
+
+Dependencies:
+
+    sudo pacman -S --needed base-devel git boost openssl libevent db zeromq
+
+GUI (optional):
+
+    sudo pacman -S --needed qt5-base
+
+Two build profiles (do not mix BDB 4.8 and `--with-incompatible-bdb` in one tree):
+
+**Profile A — node / RPC / mining only (system BDB 6.2, wallet broken)**
+
+Wallet creation segfaults with Arch `db` 6.2. Use this for `thothd` / `thoth-cli` and `generatetoaddress` to a known address.
+
+    ./autogen.sh
+    ./configure --without-gui --with-incompatible-bdb
+    make -j$(nproc)
+
+**Profile B — working wallet (`thoth-wallet`, `createwallet`, `getnewaddress`)**
+
+Build Berkeley DB 4.8 into `db4/` (not `depends/`):
+
+    ./contrib/install_db4.sh "$(pwd)"
+
+Or run the helper script (installs db4, reconfigures, builds wallet binaries):
+
+    ./contrib/build_wallet_arch.sh
+
+Manual reconfigure after `install_db4.sh` (do **not** pass `--with-incompatible-bdb`):
+
+    export BDB_PREFIX="$(pwd)/db4"
+    ./autogen.sh
+    ./configure --with-gui \
+      BDB_LIBS="-L${BDB_PREFIX}/lib -ldb_cxx-4.8 -ldb-4.8" \
+      BDB_CFLAGS="-I${BDB_PREFIX}/include" \
+      CPPFLAGS="-I${BDB_PREFIX}/include" \
+      LDFLAGS="-L${BDB_PREFIX}/lib"
+    make -j$(nproc) -C src thothd thoth-cli thoth-wallet
+
+Verify:
+
+    ./src/thoth-wallet -wallet=test create
+    ./src/thothd -daemon -wallet=test
+    ./src/thoth-cli -rpcwallet=test getnewaddress
+
+This tree already includes Arch/CachyOS compatibility fixes: `build-aux/m4/ax_boost_system.m4` (Boost ≥1.69), `src/net.cpp` (miniUPnPc ≥18), `src/wallet/bdb.cpp` and `src/wallet/walletutil.cpp` (Boost.Filesystem API). `contrib/install_db4.sh` adds Linux fixes for BDB 4.8 (config.guess redirect, `x86_64/gcc-assembly` mutex, GCC 15 implicit-int).
+
 Notes
 -----
-The release is built with GCC and then "strip litecoind" to strip the debug
+The release is built with GCC and then "strip thothd" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -196,7 +246,7 @@ If you need to build Boost yourself:
 
 Security
 --------
-To help make your Litecoin Core installation more secure by making certain attacks impossible to
+To help make your Thoth Core installation more secure by making certain attacks impossible to
 exploit even if a vulnerability is found, binaries are hardened by default.
 This can be disabled with:
 
@@ -218,7 +268,7 @@ Hardening enables the following features:
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
 
-    	scanelf -e ./litecoin
+    	scanelf -e ./thoth
 
     The output should contain:
 
@@ -226,13 +276,13 @@ Hardening enables the following features:
     ET_DYN
 
 * _Non-executable Stack_: If the stack is executable then trivial stack-based buffer overflow exploits are possible if
-    vulnerable buffers are found. By default, Litecoin Core should be built with a non-executable stack,
+    vulnerable buffers are found. By default, Thoth Core should be built with a non-executable stack,
     but if one of the libraries it uses asks for an executable stack or someone makes a mistake
     and uses a compiler extension which requires an executable stack, it will silently build an
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:
-    `scanelf -e ./litecoin`
+    `scanelf -e ./thoth`
 
     The output should contain:
 	STK/REL/PTL
@@ -242,7 +292,7 @@ Hardening enables the following features:
 
 Disable-wallet mode
 --------------------
-When the intention is to run only a P2P node without a wallet, Litecoin Core may be compiled in
+When the intention is to run only a P2P node without a wallet, Thoth Core may be compiled in
 disable-wallet mode with:
 
     ./configure --disable-wallet
@@ -263,8 +313,8 @@ Setup and Build Example: Arch Linux
 This example lists the steps necessary to setup and build a command line only, non-wallet distribution of the latest changes on Arch Linux:
 
     pacman -S git base-devel boost libevent python
-    git clone https://github.com/litecoin-project/litecoin.git
-    cd litecoin/
+    git clone https://github.com/thoth-project/thoth.git
+    cd thoth/
     ./autogen.sh
     ./configure --disable-wallet --without-gui --without-miniupnpc
     make check
@@ -273,7 +323,7 @@ Note:
 Enabling wallet support requires either compiling against a Berkeley DB newer than 4.8 (package `db`) using `--with-incompatible-bdb`,
 or building and depending on a local version of Berkeley DB 4.8. The readily available Arch Linux packages are currently built using
 `--with-incompatible-bdb` according to the [PKGBUILD](https://projects.archlinux.org/svntogit/community.git/tree/bitcoin/trunk/PKGBUILD).
-As mentioned above, when maintaining portability of the wallet between the standard Litecoin Core distributions and independently built
+As mentioned above, when maintaining portability of the wallet between the standard Thoth Core distributions and independently built
 node software is desired, Berkeley DB 4.8 must be used.
 
 
