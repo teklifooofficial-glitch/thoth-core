@@ -30,18 +30,20 @@ Per [ROADMAP.md](../ROADMAP.md#phase-1--public-testnet--infrastructure). **Check
 
 ## C. Block explorer (evaluate → deploy)
 
-**Options to evaluate (no decision implied):**
+**Plan:** [EXPLORER-PLAN.md](EXPLORER-PLAN.md) — Phase 1a minimal RPC explorer (testnet); Phase 1b Blockbook fork before Phase 3 listing prep.
+
+**Options summary:**
 
 | Option | Pros | Cons |
 |--------|------|------|
-| Fork/adapt **Esplora**-style indexer | Mature UX, API | Effort to port from Bitcoin/Litecoin |
-| **Electrs** + custom front-end | Lightweight index | Scrypt/LTC lineage quirks, MWEB display |
-| **Blockbook** (Trezor stack) | Exchange-friendly API | Heavier deploy, customization |
-| Minimal **custom indexer** (RPC scan + SQLite) | Full control | Maintenance burden, feature-poor |
+| **A — Minimal RPC** *(recommended Phase 1a)* | Fast, accurate for small chain; MWEB N/A | Limited search |
+| **B — Blockbook** *(Phase 1b)* | API for integrators | Fork coin config; heavier |
+| **C — Esplora** | Mature UX | Large port effort |
+| **D — Electrs + UI** | Light index | Custom UI; MWEB noise |
 
 **Checklist:**
 
-- [ ] Pick approach and record rationale in DEVLOG
+- [ ] Pick approach and record rationale in DEVLOG — **in progress:** Phase 1a minimal RPC ([EXPLORER-PLAN.md](EXPLORER-PLAN.md) §3)
 - [ ] Deploy **testnet** explorer first
 - [ ] Verify block hash, height, tx list, coinbase for known blocks
 - [ ] Public HTTPS URL documented in PROJECT-STATUS
@@ -70,4 +72,4 @@ Per [ROADMAP.md](../ROADMAP.md#phase-1--public-testnet--infrastructure). **Check
 
 ---
 
-**Links:** [TESTNET-JOIN.md](TESTNET-JOIN.md) · [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md) · [WHITEPAPER.md](WHITEPAPER.md) · [PROJECT-STATUS.md](PROJECT-STATUS.md) · [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
+**Links:** [EXPLORER-PLAN.md](EXPLORER-PLAN.md) · [TESTNET-JOIN.md](TESTNET-JOIN.md) · [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md) · [WHITEPAPER.md](WHITEPAPER.md) · [PROJECT-STATUS.md](PROJECT-STATUS.md) · [LEGAL-NOTICE.md](LEGAL-NOTICE.md)

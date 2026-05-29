@@ -148,6 +148,12 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - **Criteria:** no consensus failures; VPS testnet seed uptime; peer count logged weekly in [PROJECT-STATUS.md](PROJECT-STATUS.md).
 - **Week 0:** 2 peers (home + VPS seed).
 
+### 2026-05-30 — Block explorer planning (Phase 1 §C)
+
+- **`doc/EXPLORER-PLAN.md`**: requirements, options A–D, recommended Phase 1a (minimal RPC on testnet VPS) + Phase 1b (Blockbook before Phase 3 prep).
+- RPC indexers use **localhost only** (29332 testnet, 19332 mainnet).
+- [PHASE1-PREP.md](PHASE1-PREP.md) §C: approach selection in progress.
+
 ### Current mainnet state (2026-05-29, consensus v2)
 
 | Metric | Value |
@@ -172,7 +178,7 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 
 ## Pending
 
-- **Block explorer** — none deployed yet; needs indexer/API and web UI.
+- **Block explorer** — Phase 1a planned ([EXPLORER-PLAN.md](doc/EXPLORER-PLAN.md)); not deployed yet.
 - **Public network growth** — more independent nodes, DNS seeds or hardcoded seeds when stable.
 - **BIP / consensus v2** — live on mainnet; migration complete (`0a45b1856`).
 - **PoC / experiments** — keep proof-of-concept work (alternate ideas, tooling spikes) in a **separate branch or repo** so mainnet core stays minimal and reviewable.

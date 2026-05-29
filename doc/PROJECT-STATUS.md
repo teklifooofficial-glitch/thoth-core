@@ -94,6 +94,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 - **Very small network** — not suitable for production payments.
 - **MWEB disabled** — peg-in/out and extension blocks not available on mainnet/testnet.
 - **Regtest MWEB tests** need `-vbparams` override (default MWEB off).
+- **No block explorer deployed yet** — [EXPLORER-PLAN.md](EXPLORER-PLAN.md) Phase 1a in progress
 - **Testnet soak** running since **2026-05-30** (target end ~2026-06-29)
 - **No exchange listing.**
 
@@ -102,8 +103,8 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 ## Next three actions (Phase 1)
 
 1. **Maintain testnet soak** through ~2026-06-29 — log peers weekly; no consensus incidents.
-2. **Validate testnet mining guide** — legacy before block 144, `ttth1` after ([TESTNET-JOIN.md](TESTNET-JOIN.md) §6).
-3. **Evaluate block explorer** options for testnet ([PHASE1-PREP.md](PHASE1-PREP.md) §C).
+2. **Deploy explorer Phase 1a** — minimal RPC testnet explorer on VPS per [EXPLORER-PLAN.md](EXPLORER-PLAN.md).
+3. **Validate testnet mining guide** — legacy before block 144, `ttth1` after ([TESTNET-JOIN.md](TESTNET-JOIN.md) §6).
 
 ---
 
@@ -112,6 +113,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 - [ROADMAP.md](../ROADMAP.md)
 - [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md)
 - [TESTNET-JOIN.md](TESTNET-JOIN.md)
+- [EXPLORER-PLAN.md](EXPLORER-PLAN.md)
 - [Join the network](../README.md#join-the-network)
 - [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
 - [WHITEPAPER.md](WHITEPAPER.md)
