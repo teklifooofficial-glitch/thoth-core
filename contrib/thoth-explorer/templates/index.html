@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>Chain status</h1>
+  <dl class="stats">
+    <div><dt>Network</dt><dd>{{ status.chain }} ({{ network_label }})</dd></div>
+    <div><dt>Block height</dt><dd>{{ status.blocks }}</dd></div>
+    <div><dt>Best block</dt><dd class="mono truncate"><a href="{{ url_for('block_by_hash', hash=status.bestblockhash) }}">{{ status.bestblockhash }}</a></dd></div>
+    {% if status.difficulty is not none %}
+    <div><dt>Difficulty</dt><dd>{{ "%.4f"|format(status.difficulty) }}</dd></div>
+    {% endif %}
+  </dl>
+  <p class="hint"><a href="{{ url_for('api_status') }}">JSON status</a> for health checks.</p>
+</section>
+
+<section class="panel">
+  <h2>Recent blocks</h2>
+  {% if status.blocks == 0 %}
+  <p>Only genesis (height 0) is on chain. <a href="{{ url_for('block_by_height', height=0) }}">View genesis block</a>.</p>
+  {% elif recent_blocks %}
+  <table>
+    <thead>
+      <tr><th>Height</th><th>Hash</th><th>Time (UTC)</th><th>Txs</th></tr>
+    </thead>
+    <tbody>
+      {% for b in recent_blocks %}
+      <tr>
+        <td><a href="{{ url_for('block_by_height', height=b.height) }}">{{ b.height }}</a></td>
+        <td class="mono truncate">{% if b.hash %}<a href="{{ url_for('block_by_hash', hash=b.hash) }}">{{ b.hash }}</a>{% else %}—{% endif %}</td>
+        <td>{% if b.time %}{{ b.time }}{% else %}—{% endif %}</td>
+        <td>{{ b.tx_count }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No blocks to display.</p>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>Lookup</h2>
+  <form class="lookup" action="#" method="get" onsubmit="return lookupBlock(this);">
+    <label>Block height <input name="height" type="number" min="0" placeholder="0"></label>
+    <button type="submit">Go</button>
+  </form>
+  <form class="lookup" action="#" method="get" onsubmit="return lookupHash(this);">
+    <label>Block hash <input name="hash" type="text" placeholder="64-char hex" class="wide"></label>
+    <button type="submit">Go</button>
+  </form>
+</section>
+<script>
+function lookupBlock(form) {
+  const h = form.height.value.trim();
+  if (h === '') return false;
+  window.location.href = '/block/' + encodeURIComponent(h);
+  return false;
+}
+function lookupHash(form) {
+  const h = form.hash.value.trim();
+  if (h === '') return false;
+  window.location.href = '/block/hash/' + encodeURIComponent(h);
+  return false;
+}
+</script>
+{% endblock %}

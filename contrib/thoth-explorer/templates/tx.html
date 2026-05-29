@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Transaction{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>Transaction</h1>
+  <dl class="stats">
+    <div><dt>Txid</dt><dd class="mono break">{{ tx.txid }}</dd></div>
+    <div><dt>Version</dt><dd>{{ tx.version }}</dd></div>
+    <div><dt>Size</dt><dd>{{ tx.size }} bytes</dd></div>
+    <div><dt>Lock time</dt><dd>{{ tx.locktime }}</dd></div>
+    <div><dt>Confirmations</dt><dd>{{ tx.confirmations if tx.confirmations is defined else '—' }}</dd></div>
+    {% if tx.blockhash is defined %}
+    <div><dt>Block</dt><dd class="mono break"><a href="{{ url_for('block_by_hash', hash=tx.blockhash) }}">{{ tx.blockhash }}</a></dd></div>
+    {% endif %}
+  </dl>
+</section>
+
+<section class="panel">
+  <h2>Inputs ({{ tx.vin|length }})</h2>
+  {% if tx.vin %}
+  <table>
+    <thead><tr><th>#</th><th>Source</th></tr></thead>
+    <tbody>
+      {% for vin in tx.vin %}
+      <tr>
+        <td>{{ loop.index0 }}</td>
+        <td class="mono break">
+          {% if vin.coinbase is defined %}
+          coinbase: {{ vin.coinbase[:64] }}{% if vin.coinbase|length > 64 %}…{% endif %}
+          {% elif vin.txid is defined %}
+          {{ vin.txid }}:{{ vin.vout }}
+          {% else %}
+          —
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>Outputs ({{ tx.vout|length }})</h2>
+  {% if tx.vout %}
+  <table>
+    <thead><tr><th>#</th><th>Value (TTH)</th><th>Script</th></tr></thead>
+    <tbody>
+      {% for vout in tx.vout %}
+      <tr>
+        <td>{{ vout.n }}</td>
+        <td>{{ "%.8f"|format(vout.value) }}</td>
+        <td class="mono truncate">{{ vout.scriptPubKey.asm if vout.scriptPubKey is defined else '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</section>
+<p><a href="{{ url_for('index') }}">← Back to home</a></p>
+{% endblock %}

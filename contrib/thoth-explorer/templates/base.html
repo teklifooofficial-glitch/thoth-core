@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Thoth Explorer{% endblock %} — {{ network_label }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="{{ url_for('index') }}">Thoth Explorer</a>
+      <span class="badge">{{ network_label }}</span>
+    </div>
+  </header>
+  <main class="wrap">
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="disclaimer">
+        Early development / testnet — coins have <strong>no market value</strong>.
+        Not investment advice; not exchange-listed.
+        <a href="{{ doc_links.legal }}" rel="noopener">Legal notice</a>
+      </p>
+      <nav class="footer-links">
+        <a href="{{ github_repo }}" rel="noopener">GitHub</a>
+        <a href="{{ doc_links.roadmap }}" rel="noopener">Roadmap</a>
+        <a href="{{ doc_links.testnet_join }}" rel="noopener">Join testnet</a>
+        <a href="{{ doc_links.explorer_readme }}" rel="noopener">Explorer docs</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

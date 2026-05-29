@@ -43,8 +43,8 @@ Per [ROADMAP.md](../ROADMAP.md#phase-1--public-testnet--infrastructure). **Check
 
 **Checklist:**
 
-- [ ] Pick approach and record rationale in DEVLOG — **in progress:** Phase 1a minimal RPC ([EXPLORER-PLAN.md](EXPLORER-PLAN.md) §3)
-- [ ] Deploy **testnet** explorer first
+- [x] Pick approach — **Option A** minimal RPC ([contrib/thoth-explorer/README.md](../contrib/thoth-explorer/README.md))
+- [ ] Deploy **testnet** explorer first (VPS + HTTPS URL)
 - [ ] Verify block hash, height, tx list, coinbase for known blocks
 - [ ] Public HTTPS URL documented in PROJECT-STATUS
 - [ ] Mainnet explorer only after testnet validation (or parallel if low risk)

@@ -154,6 +154,12 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - RPC indexers use **localhost only** (29332 testnet, 19332 mainnet).
 - [PHASE1-PREP.md](PHASE1-PREP.md) §C: approach selection in progress.
 
+### 2026-05-30 — Minimal testnet explorer (Phase 1a)
+
+- **`contrib/thoth-explorer/`**: Flask app — `/`, `/block/<height>`, `/block/hash/<hash>`, `/tx/<txid>`, `/api/status`.
+- RPC via env vars; `.env` gitignored. Blockbook deferred to Phase 3 prep.
+- Public HTTPS URL pending VPS deploy.
+
 ### Current mainnet state (2026-05-29, consensus v2)
 
 | Metric | Value |
@@ -178,7 +184,7 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 
 ## Pending
 
-- **Block explorer** — Phase 1a planned ([EXPLORER-PLAN.md](doc/EXPLORER-PLAN.md)); not deployed yet.
+- **Block explorer** — Phase 1a code in [contrib/thoth-explorer/](contrib/thoth-explorer/); HTTPS deploy pending.
 - **Public network growth** — more independent nodes, DNS seeds or hardcoded seeds when stable.
 - **BIP / consensus v2** — live on mainnet; migration complete (`0a45b1856`).
 - **PoC / experiments** — keep proof-of-concept work (alternate ideas, tooling spikes) in a **separate branch or repo** so mainnet core stays minimal and reviewable.

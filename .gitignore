@@ -151,3 +151,7 @@ db4/
 osx_volname
 dist/
 *.background.tiff
+
+# Thoth minimal explorer (local secrets / venv)
+contrib/thoth-explorer/.env
+contrib/thoth-explorer/.venv/

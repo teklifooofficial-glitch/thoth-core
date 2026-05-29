@@ -94,7 +94,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 - **Very small network** — not suitable for production payments.
 - **MWEB disabled** — peg-in/out and extension blocks not available on mainnet/testnet.
 - **Regtest MWEB tests** need `-vbparams` override (default MWEB off).
-- **No block explorer deployed yet** — [EXPLORER-PLAN.md](EXPLORER-PLAN.md) Phase 1a in progress
+- **Explorer Phase 1a** code in [contrib/thoth-explorer/](../contrib/thoth-explorer/) — **public HTTPS URL pending** VPS deploy
 - **Testnet soak** running since **2026-05-30** (target end ~2026-06-29)
 - **No exchange listing.**
 
@@ -103,7 +103,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 ## Next three actions (Phase 1)
 
 1. **Maintain testnet soak** through ~2026-06-29 — log peers weekly; no consensus incidents.
-2. **Deploy explorer Phase 1a** — minimal RPC testnet explorer on VPS per [EXPLORER-PLAN.md](EXPLORER-PLAN.md).
+2. **Deploy explorer Phase 1a** on VPS — nginx + TLS; document public URL in this file ([contrib/thoth-explorer/README.md](../contrib/thoth-explorer/README.md)).
 3. **Validate testnet mining guide** — legacy before block 144, `ttth1` after ([TESTNET-JOIN.md](TESTNET-JOIN.md) §6).
 
 ---

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Block {{ block.height }}{% endblock %}
+{% block content %}
+<section class="panel">
+  <h1>Block {{ block.height }}</h1>
+  <dl class="stats">
+    <div><dt>Hash</dt><dd class="mono break">{{ block.hash }}</dd></div>
+    <div><dt>Previous</dt><dd class="mono break">{% if block.previousblockhash %}<a href="{{ url_for('block_by_hash', hash=block.previousblockhash) }}">{{ block.previousblockhash }}</a>{% else %}— (genesis){% endif %}</dd></div>
+    <div><dt>Merkle root</dt><dd class="mono break">{{ block.merkleroot }}</dd></div>
+    <div><dt>Time</dt><dd>{{ block.time }} (unix)</dd></div>
+    <div><dt>Difficulty</dt><dd>{{ block.difficulty }}</dd></div>
+    <div><dt>Nonce</dt><dd>{{ block.nonce }}</dd></div>
+    <div><dt>Size</dt><dd>{{ block.size }} bytes</dd></div>
+    <div><dt>Confirmations</dt><dd>{{ block.confirmations }}</dd></div>
+  </dl>
+</section>
+
+<section class="panel">
+  <h2>Transactions ({{ block.tx|length }})</h2>
+  {% if block.tx %}
+  <table>
+    <thead>
+      <tr><th>#</th><th>Txid</th><th>Type</th></tr>
+    </thead>
+    <tbody>
+      {% for tx in block.tx %}
+      <tr>
+        <td>{{ loop.index0 }}</td>
+        <td class="mono truncate"><a href="{{ url_for('tx_detail', txid=tx.txid) }}">{{ tx.txid }}</a></td>
+        <td>{% if loop.index0 == 0 %}coinbase{% else %}standard{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p>No transactions.</p>
+  {% endif %}
+</section>
+<p><a href="{{ url_for('index') }}">← Back to home</a></p>
+{% endblock %}

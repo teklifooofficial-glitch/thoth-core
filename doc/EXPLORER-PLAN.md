@@ -3,7 +3,9 @@
 Planning document for [ROADMAP.md](../ROADMAP.md) Phase 1 exit and [PHASE1-PREP.md](PHASE1-PREP.md) §C.
 **No exchange listing promises** — see [LEGAL-NOTICE.md](LEGAL-NOTICE.md).
 
-**Status:** Planning started 2026-05-30. Deploy follows testnet soak.
+**Status:** Phase 1a **implemented** — [contrib/thoth-explorer](../contrib/thoth-explorer/). Blockbook deferred to Phase 3 listing prep. Public HTTPS URL pending VPS deploy.
+
+**Decision (2026-05-30):** Option **A** (minimal Flask + JSON-RPC). Option **B** (Blockbook) deferred until pre–Phase 3.
 
 ---
 
@@ -42,13 +44,15 @@ Thoth context: **Scrypt** PoW, **consensus v2**, **small chain**, **MWEB off**, 
 
 ### Phase 1a — Minimal RPC explorer (now)
 
+**Implementation:** [contrib/thoth-explorer/README.md](../contrib/thoth-explorer/README.md) (Flask, testnet RPC on localhost).
+
 - Deploy on **VPS** alongside existing testnet seed (`152.239.115.145`).
 - Index via **`127.0.0.1:29332`** only (`thoth-cli -testnet` / `thothd` RPC).
 - Public site: **`https://testnet-explorer.<domain>`** (nginx + TLS).
 - Pages: latest blocks, block detail, tx detail, chain info (height, best hash).
 - **Goal:** Satisfy Phase 1 “explorer shows blocks, txs, chain tips correctly” with minimal code.
 
-### Phase 1b — Blockbook fork (pre–Phase 3)
+### Phase 1b — Blockbook fork (deferred to Phase 3 prep)
 
 - Before [ROADMAP.md](../ROADMAP.md) Phase 3 listing **prep** (requirements packet only), evaluate Blockbook with a **`thoth-testnet`** / **`thoth`** coin definition.
 - Reuse Phase 1a accuracy checklist; add address lookup and stable API for integrators.

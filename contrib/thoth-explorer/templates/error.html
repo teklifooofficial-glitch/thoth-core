@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Error{% endblock %}
+{% block content %}
+<section class="panel error">
+  <h1>Something went wrong</h1>
+  <p>{{ error_message }}</p>
+  <p>Ensure <code>thothd</code> is running and RPC settings in <code>.env</code> match your node (localhost only).</p>
+  <p><a href="{{ url_for('index') }}">← Back to home</a></p>
+</section>
+{% endblock %}
