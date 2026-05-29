@@ -104,11 +104,35 @@ Open P2P only: `ufw allow 19333/tcp` (not 19332).
 **Chain tip (informational, early network):** see [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md); genesis
 `3f2dc0f6de03c28bef702416f12688fef4157f92215312ace07a5946a1eb8784`.
 
-Testnet
--------
+Join testnet
+-------------
 
-Public testnet instructions (testnet4 datadir, genesis, ports, mining, consensus v2 reset):
-[doc/TESTNET-JOIN.md](doc/TESTNET-JOIN.md).
+Thoth **testnet** uses datadir `~/.thoth/testnet4/`, consensus **v2** (same rules as mainnet),
+P2P **29335**, RPC **29332** (localhost only). Full guide: [doc/TESTNET-JOIN.md](doc/TESTNET-JOIN.md).
+
+**Public testnet peer (seed):**
+
+    addnode=152.239.115.145:29335
+
+Sample `~/.thoth/thoth.conf` `[test]` block:
+
+    [test]
+    testnet=1
+    listen=1
+    port=29335
+    rpcport=29332
+    rpcbind=127.0.0.1
+    rpcallowip=127.0.0.1
+    connect=0
+    dnsseed=0
+    fixedseeds=0
+    addnode=152.239.115.145:29335
+
+**Start and verify:**
+
+    ./src/thothd -testnet -daemon
+    ./src/thoth-cli -testnet getconnectioncount
+    ./src/thoth-cli -testnet getblockchaininfo
 
 License
 -------

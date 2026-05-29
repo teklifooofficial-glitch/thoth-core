@@ -136,6 +136,12 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - README **Testnet** section links the guide.
 - [PHASE1-PREP.md](PHASE1-PREP.md) §B: join doc published.
 
+### 2026-05-29 — Testnet seed published
+
+- **Public testnet seed:** `addnode=152.239.115.145:29335` (VPS).
+- **Testnet peering verified:** home node + VPS seed; **2 peers** on testnet4.
+- README **Join testnet** section and [TESTNET-JOIN.md](TESTNET-JOIN.md) updated with seed endpoint.
+
 ### Current mainnet state (2026-05-29, consensus v2)
 
 | Metric | Value |
@@ -146,6 +152,14 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 | Nodes | **2** synced (home + VPS seed) |
 | Public seed | `addnode=152.239.115.145:19333` |
 | MWEB | Disabled on mainnet/testnet |
+
+### Current testnet state (2026-05-29)
+
+| Metric | Value |
+|--------|--------|
+| Public seed | `addnode=152.239.115.145:29335` |
+| Peers | **2** (home + VPS, verified) |
+| Genesis hash | `439581a3…5651` (full hash in [TESTNET-JOIN.md](doc/TESTNET-JOIN.md)) |
 
 ---
 

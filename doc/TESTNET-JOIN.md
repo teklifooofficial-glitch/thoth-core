@@ -5,7 +5,7 @@ investment claims — see [LEGAL-NOTICE.md](LEGAL-NOTICE.md).
 
 **Related:** [PHASE1-PREP.md](PHASE1-PREP.md) §B · [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md) ·
 [release-notes-thoth.md](release-notes-thoth.md#consensus-v2-thoth-mainnet--testnet) ·
-[README — mainnet](../README.md#join-the-network)
+[README — mainnet](../README.md#join-the-network) · [README — testnet](../README.md#join-testnet)
 
 ---
 
@@ -55,26 +55,30 @@ Message start (wire): `fd d2 c8 f1` (see `chainparams.cpp`).
 
 ## 4. Sample `~/.thoth/thoth.conf`
 
-Use a **`[test]`** block for testnet-only settings. Keep RPC credentials in the
-global section or per your deployment policy (not committed to git).
+Use a **`[test]`** block for testnet-only settings (including RPC bind). Keep `rpcuser` /
+`rpcpassword` in the global section or per your deployment policy (not committed to git).
+
+**Public seed:**
+
+    addnode=152.239.115.145:29335
 
 ```ini
 server=1
-rpcbind=127.0.0.1
-rpcallowip=127.0.0.1
 
 [test]
 testnet=1
 listen=1
 port=29335
 rpcport=29332
+rpcbind=127.0.0.1
+rpcallowip=127.0.0.1
 connect=0
 dnsseed=0
 fixedseeds=0
-# addnode=<host>:29335
+addnode=152.239.115.145:29335
 ```
 
-Add `addnode=` lines when public testnet seeds are published.
+On Ubuntu VPS, open P2P only: `ufw allow 29335/tcp` (not 29332).
 
 ---
 
