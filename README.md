@@ -65,6 +65,41 @@ Genesis block hashes: mainnet
 | Testnet  | 29332    | 29335    | `~/.thoth/testnet4/`   |
 | Regtest  | 19443    | 19444    | `~/.thoth/regtest/`    |
 
+Join the network
+----------------
+
+Thoth **mainnet** is a Litecoin-derived chain: **Scrypt** proof-of-work, **2.5-minute**
+blocks, ticker **TTH**, bech32 prefix `tth`. Run a full node to relay blocks and
+transactions on P2P port **19333** (RPC **19332** — bind to localhost only; never
+expose RPC to the internet).
+
+**Public peer (seed):**
+
+    addnode=152.239.115.145:19333
+
+Sample `~/.thoth/thoth.conf` `[main]` block:
+
+    [main]
+    listen=1
+    connect=0
+    dnsseed=0
+    fixedseeds=0
+    addnode=152.239.115.145:19333
+
+**Build:** Linux/Arch details in [doc/build-unix.md](doc/build-unix.md). On Ubuntu VPS:
+install build deps (`libdb-dev`, `libdb++-dev`, `libfmt-dev`, Boost, libevent, etc.),
+then `./configure --without-gui --with-incompatible-bdb` and `make -j$(nproc)`.
+Open P2P only: `ufw allow 19333/tcp` (not 19332).
+
+**Start and verify:**
+
+    ./src/thothd -daemon
+    ./src/thoth-cli getconnectioncount
+    ./src/thoth-cli getblockchaininfo
+
+**Chain tip (informational, early network):** height **2**; genesis
+`3f2dc0f6de03c28bef702416f12688fef4157f92215312ace07a5946a1eb8784`.
+
 License
 -------
 
