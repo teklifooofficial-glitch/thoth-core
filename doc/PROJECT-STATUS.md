@@ -1,7 +1,7 @@
 # Thoth Core — project status snapshot
 
 **Date:** 2026-05-29  
-**Phase:** [0 — Trust & transparency](../ROADMAP.md#phase-0--trust--transparency-current)  
+**Phase:** [1 — Public testnet & infrastructure](../ROADMAP.md#phase-1--public-testnet--infrastructure-started) — consensus audit in progress  
 **This file is a point-in-time snapshot.** For history see [DEVLOG.md](../DEVLOG.md); for plans see [ROADMAP.md](../ROADMAP.md).
 
 ---
@@ -13,7 +13,7 @@
 | GitHub | [teklifooofficial-glitch/thoth-core](https://github.com/teklifooofficial-glitch/thoth-core) |
 | Default branch | `main` |
 | Upstream reference | Litecoin Core 0.21.5.5 lineage |
-| Recent docs commits | `795ee92dc` rebrand · `031225f70` BDB 4.8 · `12b548c5a` join network · `893760b50` DEVLOG · `7ec44fe33` Phase 0 governance |
+| Recent docs commits | `795ee92dc` rebrand · `031225f70` BDB 4.8 · `12b548c5a` join network · `7ec44fe33` Phase 0 · `6d1672933` whitepaper + Phase 1 prep |
 
 ---
 
@@ -49,18 +49,18 @@ Testnet and regtest genesis hashes are in [README.md](../README.md) and [DEVLOG.
 
 - **Very small network** — single-digit blocks; not suitable for production payments or liquidity assumptions.
 - **Early P2P sync** — new peers may need a **manual chain copy** (e.g. `scp` of `blocks/` and `chainstate/` from a synced node) until block relay and peer count improve.
-- **BIP activation heights** inherited from Litecoin legacy; **not yet reviewed** for a chain born in 2024+. Treat segwit/taproot timing as **unaudited** until Phase 1 review lands.
+- **Consensus / BIP parameters** — inherited Litecoin heights and MWEB constants are **unsuitable for a 2024+ genesis chain**; see [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md). No `chainparams` patch merged yet; public testnet must wait for maintainer decision + reset plan.
 - **Wallet on Ubuntu VPS build** uses incompatible BDB 5.x — fine for node-only; wallet portability differs from Arch BDB 4.8 profile.
 - **No block explorer**, faucet, or public testnet campaign yet.
 - **No official listing** on CoinGecko, CoinMarketCap, or any exchange.
 
 ---
 
-## Next three actions (post–Phase 0 → Phase 1 prep)
+## Next three actions (Phase 1 — consensus audit)
 
-1. **Close Phase 0** — merge [WHITEPAPER.md](WHITEPAPER.md) draft and [PHASE1-PREP.md](PHASE1-PREP.md); mark Phase 0 exit in [ROADMAP.md](../ROADMAP.md) (website remains optional).
-2. **Start BIP / MWEB height review** — first item in [PHASE1-PREP.md](PHASE1-PREP.md); draft `chainparams` proposal before public testnet campaign.
-3. **Plan public testnet soak** — publish testnet join doc, stable testnet node, 30-day soak target; evaluate block explorer options (testnet first).
+1. **Maintainer review** — [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md) §6 open questions (MWEB defer, mainnet reset, testnet-first activation).
+2. **Draft `chainparams` PR** — implement default recommendation (Option A + C); release notes + WHITEPAPER §8 update (separate commit from this audit).
+3. **After consensus merge** — public testnet join doc and 30-day soak ([PHASE1-PREP.md](PHASE1-PREP.md) §B).
 
 ---
 
@@ -68,6 +68,7 @@ Testnet and regtest genesis hashes are in [README.md](../README.md) and [DEVLOG.
 
 - [ROADMAP.md](../ROADMAP.md)
 - [Join the network](../README.md#join-the-network)
+- [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md)
 - [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
 - [WHITEPAPER.md](WHITEPAPER.md)
 - [PHASE1-PREP.md](PHASE1-PREP.md)

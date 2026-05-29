@@ -106,6 +106,13 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - **ROADMAP** Phase 0 updated: whitepaper draft completes exit criteria except optional website.
 - **PROJECT-STATUS** next actions shifted to post–Phase 0 / pre–Phase 1.
 
+### 2026-05-29 — Phase 1 started; consensus audit
+
+- **Phase 1** opened per [ROADMAP.md](../ROADMAP.md): focus on consensus / BIP height review ([PHASE1-PREP.md](PHASE1-PREP.md) §A).
+- **`doc/CONSENSUS-AUDIT.md`**: full inventory from `src/chainparams.cpp`, problem statement, Options A/B/C, default recommendation (near-genesis BIPs + disable MWEB), proposed height table, future PR checklist.
+- **No `chainparams.cpp` changes** in this step — audit and recommendations only.
+- [PROJECT-STATUS.md](PROJECT-STATUS.md) and ROADMAP current stage updated to Phase 1.
+
 ### Current mainnet state (2026-05-29)
 
 | Metric | Value |
@@ -120,7 +127,7 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 
 - **Block explorer** — none deployed yet; needs indexer/API and web UI.
 - **Public network growth** — more independent nodes, DNS seeds or hardcoded seeds when stable.
-- **BIP activation heights review** — audit segwit/taproot (and related) deployment heights vs. new chain birth; adjust `chainparams` if needed before wide release.
+- **BIP activation heights review** — inventory done; see [doc/CONSENSUS-AUDIT.md](doc/CONSENSUS-AUDIT.md); `chainparams` patch pending maintainer decision.
 - **PoC / experiments** — keep proof-of-concept work (alternate ideas, tooling spikes) in a **separate branch or repo** so mainnet core stays minimal and reviewable.
 
 ---

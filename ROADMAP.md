@@ -21,7 +21,8 @@ guaranteed financial outcomes.
 
 | Item | Status |
 |------|--------|
-| Phase | **0 — Trust & transparency** (in progress) |
+| Phase | **1 — Public testnet & infrastructure** (started) |
+| Current focus | **Consensus / BIP review** — [doc/CONSENSUS-AUDIT.md](doc/CONSENSUS-AUDIT.md) |
 | Mainnet | Private / small network; **~height 3** |
 | Known nodes | **2** (home + VPS seed `152.239.115.145:19333`) |
 | Exchange listing | **None** — early development |
@@ -31,38 +32,28 @@ guaranteed financial outcomes.
 
 ## Phases
 
-### Phase 0 — Trust & transparency *(current)*
+### Phase 0 — Trust & transparency *(complete)*
 
 **Goal:** Publish honest project state, legal disclaimers, and planning docs before
 asking for wider participation or capital.
 
 **Deliverables:**
 - `ROADMAP.md`, `doc/PROJECT-STATUS.md`, `doc/WHITEPAPER-OUTLINE.md`
-- `doc/WHITEPAPER.md` — **draft in progress** (technical whitepaper from outline)
+- `doc/WHITEPAPER.md` — technical whitepaper draft
 - `doc/LEGAL-NOTICE.md` (non-investment disclaimer)
-- `doc/PHASE1-PREP.md` (Phase 1 checklist; scope only, no Phase 1 execution yet)
+- `doc/PHASE1-PREP.md` (Phase 1 checklist)
 - `DEVLOG.md` maintained with dated milestones
 - README links to status and roadmap
 
-**Exit criteria:**
-
-When [`doc/WHITEPAPER.md`](doc/WHITEPAPER.md) is merged on `main`, Phase 0 is **complete**
-except for the **optional official website** (docs-on-GitHub is sufficient for exit):
-
-| Criterion | Status |
-|-----------|--------|
-| Governance docs on `main` (`ROADMAP`, `PROJECT-STATUS`, `LEGAL-NOTICE`, README status) | Done (`7ec44fe33`) |
-| Full whitepaper draft (`doc/WHITEPAPER.md`) | In progress → merge completes this row |
-| Phase 1 prep checklist (`doc/PHASE1-PREP.md`) | In progress → merge completes this row |
-| No RPC or operator secrets in the repository | Ongoing |
-| **No exchange listing claims** in public material | Ongoing |
-| Optional: standalone website / docs landing | **Not required** for Phase 0 exit |
+**Exit criteria:** Met on `main` except optional standalone website (docs-on-GitHub sufficient).
 
 After whitepaper draft merge: advance to **Phase 1** per [PHASE1-PREP.md](doc/PHASE1-PREP.md).
 
 ---
 
-### Phase 1 — Public testnet & infrastructure
+### Phase 1 — Public testnet & infrastructure *(started)*
+
+**Current focus:** Consensus / BIP height audit — [doc/CONSENSUS-AUDIT.md](doc/CONSENSUS-AUDIT.md) (inventory and recommendations; `chainparams` patch is a separate future PR).
 
 **Goal:** Exercise the chain in public with testnet, tooling, and independent nodes.
 
@@ -170,4 +161,4 @@ After whitepaper draft merge: advance to **Phase 1** per [PHASE1-PREP.md](doc/PH
 2. Update **this file** and, if relevant, `doc/PROJECT-STATUS.md` or `DEVLOG.md`.
 3. Maintainer review before work is treated as official scope.
 
-**Related:** [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md) · [DEVLOG.md](DEVLOG.md) · [doc/WHITEPAPER.md](doc/WHITEPAPER.md) · [doc/PHASE1-PREP.md](doc/PHASE1-PREP.md)
+**Related:** [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md) · [DEVLOG.md](DEVLOG.md) · [doc/WHITEPAPER.md](doc/WHITEPAPER.md) · [doc/PHASE1-PREP.md](doc/PHASE1-PREP.md) · [doc/CONSENSUS-AUDIT.md](doc/CONSENSUS-AUDIT.md)

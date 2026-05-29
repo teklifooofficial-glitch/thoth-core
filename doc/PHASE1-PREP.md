@@ -8,7 +8,7 @@ Per [ROADMAP.md](../ROADMAP.md#phase-1--public-testnet--infrastructure). **Check
 
 ## A. Consensus / BIP height review
 
-- [ ] Inventory all deployment heights in `src/chainparams.cpp` (BIP16/34/65/66, BIP9, Segwit, Taproot, MWEB)
+- [x] Inventory all deployment heights in `src/chainparams.cpp` (BIP16/34/65/66, BIP9, Segwit, Taproot, MWEB) — see [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md) §1
 - [ ] Document intended activation strategy for a chain born **2024+** at height 0
 - [ ] Decide: retain, reset, or disable MWEB for initial public testnet/mainnet
 - [ ] Draft `chainparams` patch + release notes (no merge without roadmap update)
@@ -70,4 +70,4 @@ Per [ROADMAP.md](../ROADMAP.md#phase-1--public-testnet--infrastructure). **Check
 
 ---
 
-**Links:** [WHITEPAPER.md](WHITEPAPER.md) · [PROJECT-STATUS.md](PROJECT-STATUS.md) · [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
+**Links:** [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md) · [WHITEPAPER.md](WHITEPAPER.md) · [PROJECT-STATUS.md](PROJECT-STATUS.md) · [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
