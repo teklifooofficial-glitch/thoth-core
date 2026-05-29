@@ -17,14 +17,14 @@ guaranteed financial outcomes.
 
 ---
 
-## Current stage (2026-05-29)
+## Current stage (2026-05-30)
 
 | Item | Status |
 |------|--------|
-| Phase | **1 — Public testnet & infrastructure** (started) |
-| Current focus | **Consensus / BIP review** — [doc/CONSENSUS-AUDIT.md](doc/CONSENSUS-AUDIT.md) |
-| Mainnet | Private / small network; **~height 3** |
-| Known nodes | **2** (home + VPS seed `152.239.115.145:19333`) |
+| Phase | **1 — Public testnet & infrastructure** (soak in progress) |
+| Current focus | **Testnet 30-day soak** — started 2026-05-30, target end ~2026-06-29 |
+| Testnet seed | `152.239.115.145:29335` (2 peers logged week 0) |
+| Mainnet | Consensus v2; small network — see [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md) |
 | Exchange listing | **None** — early development |
 | Live snapshot | [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md) |
 

@@ -142,6 +142,12 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - **Testnet peering verified:** home node + VPS seed; **2 peers** on testnet4.
 - README **Join testnet** section and [TESTNET-JOIN.md](TESTNET-JOIN.md) updated with seed endpoint.
 
+### 2026-05-30 — Testnet soak period started (Phase 1)
+
+- **Soak start:** 2026-05-30; **end target:** ~2026-06-29 (30-day Phase 1 criterion).
+- **Criteria:** no consensus failures; VPS testnet seed uptime; peer count logged weekly in [PROJECT-STATUS.md](PROJECT-STATUS.md).
+- **Week 0:** 2 peers (home + VPS seed).
+
 ### Current mainnet state (2026-05-29, consensus v2)
 
 | Metric | Value |
@@ -153,12 +159,13 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 | Public seed | `addnode=152.239.115.145:19333` |
 | MWEB | Disabled on mainnet/testnet |
 
-### Current testnet state (2026-05-29)
+### Current testnet state (2026-05-30)
 
 | Metric | Value |
 |--------|--------|
+| Soak | **2026-05-30 → ~2026-06-29** |
 | Public seed | `addnode=152.239.115.145:29335` |
-| Peers | **2** (home + VPS, verified) |
+| Peers | **2** (home + VPS; week 0 log) |
 | Genesis hash | `439581a3…5651` (full hash in [TESTNET-JOIN.md](doc/TESTNET-JOIN.md)) |
 
 ---

@@ -1,7 +1,7 @@
 # Thoth Core — project status snapshot
 
-**Date:** 2026-05-29  
-**Phase:** [1 — Public testnet & infrastructure](../ROADMAP.md#phase-1--public-testnet--infrastructure-started) — consensus v2 live on mainnet  
+**Date:** 2026-05-30  
+**Phase:** [1 — Public testnet & infrastructure](../ROADMAP.md#phase-1--public-testnet--infrastructure-started) — **testnet soak in progress**  
 **This file is a point-in-time snapshot.** For history see [DEVLOG.md](../DEVLOG.md); for plans see [ROADMAP.md](../ROADMAP.md).
 
 ---
@@ -52,12 +52,28 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 
 | Item | Value |
 |------|--------|
-| Stage | Phase 1 — **public seed live** |
+| Stage | Phase 1 — **30-day soak in progress** |
+| Soak started | **2026-05-30** |
+| Soak end target | **~2026-06-29** (Phase 1 exit criterion) |
 | Genesis hash | `439581a39f5f59930cf3e349b9aca7c483586160df898fa87b10d278c2515651` |
 | Known peers | **2** — home + VPS testnet seed (**synced**) |
 | Public seed | `addnode=152.239.115.145:29335` (P2P **29335**; RPC **29332** localhost only) |
 | DNS / fixed seeds | Disabled; manual `addnode` bootstrap |
 | MWEB | **Disabled** |
+
+### Testnet soak criteria ([PHASE1-PREP.md](PHASE1-PREP.md) §B)
+
+| Criterion | Status |
+|-----------|--------|
+| No consensus failures | Monitoring (v2 rules; MWEB off) |
+| Seed uptime (`152.239.115.145:29335`) | Monitoring |
+| Peer count logged weekly | Started 2026-05-30 |
+
+**Weekly peer log** (testnet `getconnectioncount` / operator notes):
+
+| Week ending | Peer count | Notes |
+|-------------|------------|-------|
+| 2026-05-30 | 2 | Soak start; home + VPS seed |
 
 ---
 
@@ -78,15 +94,15 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 - **Very small network** — not suitable for production payments.
 - **MWEB disabled** — peg-in/out and extension blocks not available on mainnet/testnet.
 - **Regtest MWEB tests** need `-vbparams` override (default MWEB off).
-- **No block explorer** or public testnet soak yet.
+- **Testnet soak** running since **2026-05-30** (target end ~2026-06-29)
 - **No exchange listing.**
 
 ---
 
 ## Next three actions (Phase 1)
 
-1. **Validate testnet mining guide** — legacy address before block 144, `ttth1` bech32 after ([TESTNET-JOIN.md](TESTNET-JOIN.md) §6).
-2. **Begin 30-day testnet soak** ([PHASE1-PREP.md](PHASE1-PREP.md) §B).
+1. **Maintain testnet soak** through ~2026-06-29 — log peers weekly; no consensus incidents.
+2. **Validate testnet mining guide** — legacy before block 144, `ttth1` after ([TESTNET-JOIN.md](TESTNET-JOIN.md) §6).
 3. **Evaluate block explorer** options for testnet ([PHASE1-PREP.md](PHASE1-PREP.md) §C).
 
 ---

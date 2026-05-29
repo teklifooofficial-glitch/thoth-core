@@ -20,11 +20,11 @@ Per [ROADMAP.md](../ROADMAP.md#phase-1--public-testnet--infrastructure). **Check
 ## B. Public testnet campaign
 
 - [x] Publish testnet join doc — [TESTNET-JOIN.md](TESTNET-JOIN.md)
-- [ ] Run public testnet node(s) with stable uptime target
+- [x] Run public testnet node(s) with stable uptime target — VPS seed `152.239.115.145:29335`
 - [ ] Testnet mining guide (`generatetoaddress`, expected try counts)
 - [ ] Optional: faucet script or documented donate-and-faucet process
-- [ ] **Soak period:** continuous testnet ≥ **30 days** without consensus failures (ROADMAP exit criterion)
-- [ ] Log incidents in DEVLOG / PROJECT-STATUS
+- [ ] **Soak period:** continuous testnet ≥ **30 days** without consensus failures — **in progress** (started **2026-05-30**, end target **~2026-06-29**)
+- [x] Log incidents in DEVLOG / PROJECT-STATUS — weekly peer count (see [PROJECT-STATUS.md](PROJECT-STATUS.md))
 
 ---
 
