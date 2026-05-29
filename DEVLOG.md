@@ -120,14 +120,24 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - **Chain reset:** mainnet datadir must be wiped on seed + home node; height returns to **0** (genesis unchanged).
 - Release notes: [doc/release-notes-thoth.md](doc/release-notes-thoth.md#consensus-v2-thoth-mainnet--testnet).
 - Regtest: MWEB `NEVER_ACTIVE` by default; MWEB functional tests require `-vbparams` override.
-- Commit: `consensus: Thoth near-genesis BIP heights, disable MWEB (chain reset required)`.
+- Commit: `consensus: Thoth near-genesis BIP heights, disable MWEB (chain reset required)` (`0a45b1856`).
 
-### Current mainnet state (2026-05-29, post–consensus v2)
+### 2026-05-29 — Consensus v2 chain restart (operators)
+
+- **Migration complete:** home + VPS seed reset datadirs, rebuilt v2 chain from genesis.
+- **Pre-v2 chain invalidated** (~height 3); fresh v2 mainnet from block 0.
+- **Both nodes synced** on mainnet (home + `152.239.115.145:19333`).
+- **Tip:** height **1**, best block `6123e5e50555e456fa8808230311538235343d8fdb8fd380de8ad9ab89ea20d1`.
+- **Next Phase 1:** publish testnet join doc ([PHASE1-PREP.md](PHASE1-PREP.md) §B).
+
+### Current mainnet state (2026-05-29, consensus v2)
 
 | Metric | Value |
 |--------|--------|
-| Best block height | **0** after operator reset (was ~3 pre-v2) |
-| Genesis hash | `3f2dc0f6…8784` *(unchanged)* |
+| Best block height | **1** |
+| Best block hash | `6123e5e50555e456fa8808230311538235343d8fdb8fd380de8ad9ab89ea20d1` |
+| Genesis hash | `3f2dc0f6de03c28bef702416f12688fef4157f92215312ace07a5946a1eb8784` |
+| Nodes | **2** synced (home + VPS seed) |
 | Public seed | `addnode=152.239.115.145:19333` |
 | MWEB | Disabled on mainnet/testnet |
 
@@ -137,7 +147,7 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 
 - **Block explorer** — none deployed yet; needs indexer/API and web UI.
 - **Public network growth** — more independent nodes, DNS seeds or hardcoded seeds when stable.
-- **BIP / consensus v2** — implemented; operators must reset datadirs ([CONSENSUS-AUDIT.md](doc/CONSENSUS-AUDIT.md)).
+- **BIP / consensus v2** — live on mainnet; migration complete (`0a45b1856`).
 - **PoC / experiments** — keep proof-of-concept work (alternate ideas, tooling spikes) in a **separate branch or repo** so mainnet core stays minimal and reviewable.
 
 ---
@@ -151,3 +161,4 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 | `12b548c5a` | Join-the-network instructions in README |
 | `893760b50` | DEVLOG |
 | `7ec44fe33` | Phase 0 governance (ROADMAP, PROJECT-STATUS, legal notice) |
+| `0a45b1856` | Consensus v2: near-genesis BIPs, MWEB disabled |
