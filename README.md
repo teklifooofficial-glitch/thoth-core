@@ -17,6 +17,11 @@ software which enables the use of this currency.
 For more information, as well as an immediately useable, binary version of
 the Thoth Core software, see [https://thoth.org](https://thoth.org).
 
+> **Project status:** Thoth is in **early development**. Mainnet is a small
+> private network (height ~3, two known nodes). **TTH is not listed on any
+> exchange.** See [ROADMAP.md](ROADMAP.md) and [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md)
+> for phase, limits, and disclaimers.
+
 Quick start
 -----------
 
