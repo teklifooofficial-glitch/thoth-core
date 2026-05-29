@@ -19,7 +19,7 @@ Per [ROADMAP.md](../ROADMAP.md#phase-1--public-testnet--infrastructure). **Check
 
 ## B. Public testnet campaign
 
-- [ ] Publish testnet join doc (ports, genesis hash, `[test]` config block)
+- [x] Publish testnet join doc — [TESTNET-JOIN.md](TESTNET-JOIN.md)
 - [ ] Run public testnet node(s) with stable uptime target
 - [ ] Testnet mining guide (`generatetoaddress`, expected try counts)
 - [ ] Optional: faucet script or documented donate-and-faucet process
@@ -70,4 +70,4 @@ Per [ROADMAP.md](../ROADMAP.md#phase-1--public-testnet--infrastructure). **Check
 
 ---
 
-**Links:** [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md) · [WHITEPAPER.md](WHITEPAPER.md) · [PROJECT-STATUS.md](PROJECT-STATUS.md) · [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
+**Links:** [TESTNET-JOIN.md](TESTNET-JOIN.md) · [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md) · [WHITEPAPER.md](WHITEPAPER.md) · [PROJECT-STATUS.md](PROJECT-STATUS.md) · [LEGAL-NOTICE.md](LEGAL-NOTICE.md)

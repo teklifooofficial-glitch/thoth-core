@@ -44,7 +44,7 @@ New nodes must use the v2 binary and reset if they still hold pre-v2 block data.
 | MWEB | **Disabled** on mainnet |
 | Exchange listed | **No** |
 
-Testnet genesis: `439581a39f5f59930cf3e349b9aca7c483586160df898fa87b10d278c2515651` — same reset policy under `~/.thoth/testnet4/`.
+Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testnet4/` if using pre-v2 data.
 
 ---
 
@@ -52,6 +52,7 @@ Testnet genesis: `439581a39f5f59930cf3e349b9aca7c483586160df898fa87b10d278c25156
 
 - **Build** from source on **Arch/CachyOS** and **Ubuntu 22.04 VPS** (`doc/build-unix.md`)
 - **Consensus v2** in `chainparams.cpp` — Segwit at 144, Taproot window 8064–101376, MWEB off
+- **Testnet join doc** published ([TESTNET-JOIN.md](TESTNET-JOIN.md))
 - **Headless node** on VPS with systemd; **wallet** on Arch with BDB 4.8
 - **RPC mining:** `generatetoaddress` (coinbase must include height ≥ block 1 under v2)
 - **Two-node sync** on v2 mainnet (home + VPS seed peering verified)
@@ -71,9 +72,9 @@ Testnet genesis: `439581a39f5f59930cf3e349b9aca7c483586160df898fa87b10d278c25156
 
 ## Next three actions (Phase 1)
 
-1. **Publish testnet join doc** — ports, genesis hash, `[test]` config ([PHASE1-PREP.md](PHASE1-PREP.md) §B).
-2. **Run public testnet node(s)** and begin 30-day soak target.
-3. **Evaluate block explorer** options for testnet ([PHASE1-PREP.md](PHASE1-PREP.md) §C).
+1. **Run public testnet node(s)** with stable uptime; publish `addnode` when available.
+2. **Validate testnet mining guide** — legacy address before block 144, `ttth1` bech32 after ([TESTNET-JOIN.md](TESTNET-JOIN.md) §6).
+3. **Begin 30-day testnet soak** and evaluate block explorer ([PHASE1-PREP.md](PHASE1-PREP.md) §B–§C).
 
 ---
 
@@ -81,6 +82,7 @@ Testnet genesis: `439581a39f5f59930cf3e349b9aca7c483586160df898fa87b10d278c25156
 
 - [ROADMAP.md](../ROADMAP.md)
 - [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md)
+- [TESTNET-JOIN.md](TESTNET-JOIN.md)
 - [Join the network](../README.md#join-the-network)
 - [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
 - [WHITEPAPER.md](WHITEPAPER.md)

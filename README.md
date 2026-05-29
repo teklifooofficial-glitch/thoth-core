@@ -17,10 +17,9 @@ software which enables the use of this currency.
 For more information, as well as an immediately useable, binary version of
 the Thoth Core software, see [https://thoth.org](https://thoth.org).
 
-> **Project status:** Thoth is in **early development**. Mainnet is a small
-> private network (height ~3, two known nodes). **TTH is not listed on any
+> **Project status:** Thoth is in **early development** (Phase 1). **TTH is not listed on any
 > exchange.** See [ROADMAP.md](ROADMAP.md) and [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md)
-> for phase, limits, and disclaimers.
+> for current network state and disclaimers.
 
 Quick start
 -----------
@@ -54,10 +53,10 @@ BDB 4.8 with `./contrib/install_db4.sh $(pwd)` and reconfigure with `BDB_LIBS` /
     ./src/thothd -daemon
     ./src/thoth-cli generatetoaddress 1 "<addr>" 1000000
 
-**Testnet** (datadir `~/.thoth/testnet4/`; use `[test]` in config for ports):
+**Testnet** — [doc/TESTNET-JOIN.md](doc/TESTNET-JOIN.md) (`~/.thoth/testnet4/`, `[test]` config):
 
     ./src/thothd -testnet -daemon
-    ./src/thoth-cli -testnet generatetoaddress 1 "<addr>" 5000000
+    ./src/thoth-cli -testnet generatetoaddress 1 "<legacy-addr>" 5000000   # before block 144
 
 Genesis block hashes: mainnet
 `3f2dc0f6de03c28bef702416f12688fef4157f92215312ace07a5946a1eb8784`; testnet
@@ -102,8 +101,14 @@ Open P2P only: `ufw allow 19333/tcp` (not 19332).
     ./src/thoth-cli getconnectioncount
     ./src/thoth-cli getblockchaininfo
 
-**Chain tip (informational, early network):** height **2**; genesis
+**Chain tip (informational, early network):** see [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md); genesis
 `3f2dc0f6de03c28bef702416f12688fef4157f92215312ace07a5946a1eb8784`.
+
+Testnet
+-------
+
+Public testnet instructions (testnet4 datadir, genesis, ports, mining, consensus v2 reset):
+[doc/TESTNET-JOIN.md](doc/TESTNET-JOIN.md).
 
 License
 -------

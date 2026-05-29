@@ -130,6 +130,12 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - **Tip:** height **1**, best block `6123e5e50555e456fa8808230311538235343d8fdb8fd380de8ad9ab89ea20d1`.
 - **Next Phase 1:** publish testnet join doc ([PHASE1-PREP.md](PHASE1-PREP.md) §B).
 
+### 2026-05-29 — Testnet join guide (Phase 1)
+
+- **`doc/TESTNET-JOIN.md`**: testnet4 datadir, genesis, ports, `[test]` config, build/run, mining (legacy before block 144 / `ttth1` after), v2 reset, consensus links, legal notice.
+- README **Testnet** section links the guide.
+- [PHASE1-PREP.md](PHASE1-PREP.md) §B: join doc published.
+
 ### Current mainnet state (2026-05-29, consensus v2)
 
 | Metric | Value |
