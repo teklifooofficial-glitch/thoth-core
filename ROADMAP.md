@@ -38,15 +38,27 @@ asking for wider participation or capital.
 
 **Deliverables:**
 - `ROADMAP.md`, `doc/PROJECT-STATUS.md`, `doc/WHITEPAPER-OUTLINE.md`
+- `doc/WHITEPAPER.md` — **draft in progress** (technical whitepaper from outline)
 - `doc/LEGAL-NOTICE.md` (non-investment disclaimer)
+- `doc/PHASE1-PREP.md` (Phase 1 checklist; scope only, no Phase 1 execution yet)
 - `DEVLOG.md` maintained with dated milestones
 - README links to status and roadmap
 
 **Exit criteria:**
-- All Phase 0 docs merged on `main`
-- No undisclosed RPC or operator secrets in the repository
-- Whitepaper outline reviewed; full whitepaper not required yet
-- **No exchange listing claims or listing “promises” in any public material**
+
+When [`doc/WHITEPAPER.md`](doc/WHITEPAPER.md) is merged on `main`, Phase 0 is **complete**
+except for the **optional official website** (docs-on-GitHub is sufficient for exit):
+
+| Criterion | Status |
+|-----------|--------|
+| Governance docs on `main` (`ROADMAP`, `PROJECT-STATUS`, `LEGAL-NOTICE`, README status) | Done (`7ec44fe33`) |
+| Full whitepaper draft (`doc/WHITEPAPER.md`) | In progress → merge completes this row |
+| Phase 1 prep checklist (`doc/PHASE1-PREP.md`) | In progress → merge completes this row |
+| No RPC or operator secrets in the repository | Ongoing |
+| **No exchange listing claims** in public material | Ongoing |
+| Optional: standalone website / docs landing | **Not required** for Phase 0 exit |
+
+After whitepaper draft merge: advance to **Phase 1** per [PHASE1-PREP.md](doc/PHASE1-PREP.md).
 
 ---
 
@@ -158,4 +170,4 @@ asking for wider participation or capital.
 2. Update **this file** and, if relevant, `doc/PROJECT-STATUS.md` or `DEVLOG.md`.
 3. Maintainer review before work is treated as official scope.
 
-**Related:** [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md) · [DEVLOG.md](DEVLOG.md) · [doc/WHITEPAPER-OUTLINE.md](doc/WHITEPAPER-OUTLINE.md)
+**Related:** [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md) · [DEVLOG.md](DEVLOG.md) · [doc/WHITEPAPER.md](doc/WHITEPAPER.md) · [doc/PHASE1-PREP.md](doc/PHASE1-PREP.md)

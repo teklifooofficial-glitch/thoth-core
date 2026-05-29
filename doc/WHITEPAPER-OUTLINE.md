@@ -66,4 +66,4 @@ Links to repo, genesis miner script, BIPs inherited from upstream, glossary, and
 
 ---
 
-**Status:** Outline only — full whitepaper targeted after Phase 0 doc set is merged.
+**Status:** Expanded in [WHITEPAPER.md](WHITEPAPER.md) (draft v0.1). This file remains the section skeleton.

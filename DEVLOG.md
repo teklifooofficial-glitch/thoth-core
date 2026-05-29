@@ -91,6 +91,21 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - README **"Join the network"** section: seed peer, sample `[main]` config, build pointers, verification commands (`12b548c5a`).
 - README listed chain tip at height **2** at commit time; network has since advanced.
 
+### 2026-05-29 — Phase 0 governance (GitHub)
+
+- **`ROADMAP.md`**: Phases 0–5, exit criteria, non-goals, “update roadmap first” rule (`7ec44fe33`).
+- **`doc/PROJECT-STATUS.md`**: snapshot (height ~3, two nodes, known limits).
+- **`doc/WHITEPAPER-OUTLINE.md`**, **`doc/LEGAL-NOTICE.md`**: outline and disclaimers.
+- **README** project-status box: early development, not exchange-listed.
+- Pushed to **teklifooofficial-glitch/thoth-core** on `main`.
+
+### 2026-05-29 — Whitepaper draft and Phase 1 prep
+
+- **`doc/WHITEPAPER.md`**: draft from outline — tokenomics, network params, honest dev stage, MWEB inherited (Phase 1 BIP review pending).
+- **`doc/PHASE1-PREP.md`**: checklist (BIP review, testnet soak, explorer options, 10-node goal).
+- **ROADMAP** Phase 0 updated: whitepaper draft completes exit criteria except optional website.
+- **PROJECT-STATUS** next actions shifted to post–Phase 0 / pre–Phase 1.
+
 ### Current mainnet state (2026-05-29)
 
 | Metric | Value |
@@ -117,3 +132,5 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 | `795ee92dc` | Rebrand to Thoth (TTH): genesis, chainparams, Arch build support |
 | `031225f70` | BDB 4.8 wallet build profile for Arch/CachyOS |
 | `12b548c5a` | Join-the-network instructions in README |
+| `893760b50` | DEVLOG |
+| `7ec44fe33` | Phase 0 governance (ROADMAP, PROJECT-STATUS, legal notice) |

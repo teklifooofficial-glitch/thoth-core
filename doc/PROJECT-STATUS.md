@@ -13,7 +13,7 @@
 | GitHub | [teklifooofficial-glitch/thoth-core](https://github.com/teklifooofficial-glitch/thoth-core) |
 | Default branch | `main` |
 | Upstream reference | Litecoin Core 0.21.5.5 lineage |
-| Recent docs commits | `795ee92dc` rebrand · `031225f70` BDB 4.8 docs · `12b548c5a` join network · `893760b50` DEVLOG |
+| Recent docs commits | `795ee92dc` rebrand · `031225f70` BDB 4.8 · `12b548c5a` join network · `893760b50` DEVLOG · `7ec44fe33` Phase 0 governance |
 
 ---
 
@@ -56,11 +56,11 @@ Testnet and regtest genesis hashes are in [README.md](../README.md) and [DEVLOG.
 
 ---
 
-## Next three actions (Phase 0)
+## Next three actions (post–Phase 0 → Phase 1 prep)
 
-1. **Complete Phase 0 governance docs** — ROADMAP, this file, whitepaper outline, legal notice, README status box *(this PR)*.
-2. **Draft full whitepaper** from [WHITEPAPER-OUTLINE.md](WHITEPAPER-OUTLINE.md) — technical and tokenomics sections peer-reviewed before Phase 1.
-3. **Publish recurring status updates** — update this file or DEVLOG when height, node count, or phase changes; keep disclaimers visible on README.
+1. **Close Phase 0** — merge [WHITEPAPER.md](WHITEPAPER.md) draft and [PHASE1-PREP.md](PHASE1-PREP.md); mark Phase 0 exit in [ROADMAP.md](../ROADMAP.md) (website remains optional).
+2. **Start BIP / MWEB height review** — first item in [PHASE1-PREP.md](PHASE1-PREP.md); draft `chainparams` proposal before public testnet campaign.
+3. **Plan public testnet soak** — publish testnet join doc, stable testnet node, 30-day soak target; evaluate block explorer options (testnet first).
 
 ---
 
@@ -69,4 +69,5 @@ Testnet and regtest genesis hashes are in [README.md](../README.md) and [DEVLOG.
 - [ROADMAP.md](../ROADMAP.md)
 - [Join the network](../README.md#join-the-network)
 - [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
-- [WHITEPAPER-OUTLINE.md](WHITEPAPER-OUTLINE.md)
+- [WHITEPAPER.md](WHITEPAPER.md)
+- [PHASE1-PREP.md](PHASE1-PREP.md)
