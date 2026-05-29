@@ -268,4 +268,25 @@ Early blocks therefore behave like **pre-Segwit, pre-BIP16-enforcement** consens
 
 ---
 
-**Audit status:** Inventory complete. Strategy and default recommendation documented. **Awaiting maintainer decision** before any `chainparams.cpp` patch.
+**Audit status:** **Resolved** — Option A + C implemented in `src/chainparams.cpp` (consensus v2). See appendix below.
+
+---
+
+## Appendix — Resolved (2026-05-29)
+
+| Item | Resolution |
+|------|------------|
+| Strategy | **Option A + C** per §4 |
+| Mainnet reset | **Approved** — wipe datadir; height returns to 0 |
+| MWEB | **Deferred** — `NEVER_ACTIVE` on mainnet/testnet; regtest default off |
+| Implementation | `src/chainparams.cpp` — genesis asserts unchanged |
+| Docs | `release-notes-thoth.md`, `WHITEPAPER.md` §8, `PROJECT-STATUS.md`, `DEVLOG.md` |
+| Commit | `consensus: Thoth near-genesis BIP heights, disable MWEB (chain reset required)` |
+
+**Open questions (§6) closed:**
+
+1. MWEB — defer until separate review.
+2. Mainnet reset — yes, at height ~3.
+3. Shared plan — same heights; different `BIP34Hash`/genesis per network.
+4. Taproot 8064 — adopted as proposed.
+5. Regtest MWEB — `NEVER_ACTIVE`; tests need `-vbparams` to enable MWEB locally.

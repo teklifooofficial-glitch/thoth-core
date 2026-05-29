@@ -10,6 +10,41 @@ Please report bugs using the issue tracker at GitHub:
 
   <https://github.com/thoth-project/thoth/issues>
 
+Consensus v2 (Thoth mainnet / testnet)
+--------------------------------------
+
+**Breaking:** Thoth **consensus v2** replaces inherited Litecoin activation
+heights with near-genesis BIP/Segwit rules and **disables MWEB** on mainnet
+and testnet. Genesis block hashes are **unchanged**; existing datadirs from
+pre-v2 builds are **incompatible** with this release.
+
+**Operator action (required):** stop `thothd`, remove old chain data, restart
+from genesis:
+
+```bash
+thoth-cli stop
+rm -rf ~/.thoth/blocks ~/.thoth/chainstate ~/.thoth/indexes
+# testnet: ~/.thoth/testnet4/blocks ~/.thoth/testnet4/chainstate ...
+thothd -daemon
+```
+
+See [doc/CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md) for the full height table.
+
+| Parameter | Mainnet | Testnet |
+|-----------|---------|---------|
+| BIP16Height | 0 | 0 |
+| BIP34Height | 1 | 1 |
+| BIP34Hash | Thoth genesis hash | Thoth testnet genesis hash |
+| BIP65/66Height | 1 | 1 |
+| CSVHeight | 2 | 2 |
+| SegwitHeight | 144 | 144 |
+| Taproot (BIP8) | start 8064, timeout 101376 | same (aligned to 2016-block window) |
+| MWEB | **disabled** | **disabled** |
+
+**Regtest:** MWEB defaults to `NEVER_ACTIVE`; Litecoin frozen MWEB output IDs
+removed. MWEB functional tests must pass `-vbparams=mweb:-1:9223372036854775807`
+(or similar) to activate MWEB locally.
+
 Notable changes
 ===============
 

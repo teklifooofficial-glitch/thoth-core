@@ -121,23 +121,36 @@ immature until maturity). There is **no market price** implied by this document.
 
 ---
 
-## 8. MWEB and inherited consensus features
+## 8. Consensus activation (consensus v2)
 
-Thoth inherits **Litecoin MWEB** (Mimblewimble Extension Blocks) and related deployment
-machinery from upstream (`DEPLOYMENT_MWEB`, LIP references in `chainparams.cpp`).
+Thoth **consensus v2** (implemented in `src/chainparams.cpp`, documented in
+[CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md)) replaces Litecoin legacy activation
+heights with parameters suited to a chain born at Thoth genesis (2024+).
 
-**Important:** BIP and deployment **activation heights** (BIP16/34/65/66, Segwit, Taproot,
-MWEB start heights, etc.) are still set to **Litecoin legacy values** "Thoth" mainnet began
-at genesis in 2024 with height 0; those heights are **not yet re-derived** for this chain.
+**MWEB is disabled** on mainnet and testnet until a future deployment is
+reviewed and merged. Litecoin-specific MWEB grandfather and frozen-output
+constants were removed.
 
-**Phase 1 action (pending):** Full [consensus / BIP review](../ROADMAP.md#phase-1--public-testnet--infrastructure)
-before public testnet campaign and before treating mainnet as “launched.” Until then:
+### Activation table (mainnet / testnet)
 
-- Treat Segwit/Taproot/MWEB timing as **unaudited for Thoth**.
-- Do not assume MWEB is active or user-ready on mainnet at low heights.
-- Changes require roadmap update, `chainparams` patch, and release notes.
+| Parameter | Mainnet | Testnet |
+|-----------|---------|---------|
+| BIP16Height | 0 | 0 |
+| BIP34Height | 1 | 1 |
+| BIP34Hash | `3f2dc0f6…8784` (genesis) | `439581a3…5651` (genesis) |
+| BIP65Height | 1 | 1 |
+| BIP66Height | 1 | 1 |
+| CSVHeight | 2 | 2 |
+| SegwitHeight | 144 | 144 |
+| MinBIP9WarningHeight | 2208 | 2160 |
+| Taproot (bit 2) | nStartHeight 8064, nTimeoutHeight 101376 | same |
+| MWEB (bit 4) | **NEVER_ACTIVE** | **NEVER_ACTIVE** |
 
-See [PHASE1-PREP.md](PHASE1-PREP.md) for the review checklist.
+**Chain reset:** Pre-v2 mainnet blocks (~height 3) are invalid under v2
+(BIP34 from height 1). Operators must wipe `blocks/` and `chainstate/` and
+remine. See [release-notes-thoth.md](release-notes-thoth.md#consensus-v2-thoth-mainnet--testnet).
+
+**Regtest:** MWEB off by default; override with `-vbparams` for MWEB tests.
 
 ---
 

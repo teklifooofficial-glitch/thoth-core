@@ -113,13 +113,23 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - **No `chainparams.cpp` changes** in this step — audit and recommendations only.
 - [PROJECT-STATUS.md](PROJECT-STATUS.md) and ROADMAP current stage updated to Phase 1.
 
-### Current mainnet state (2026-05-29)
+### 2026-05-29 — Consensus parameter migration (Phase 1)
+
+- Applied **Option A + C** from [doc/CONSENSUS-AUDIT.md](doc/CONSENSUS-AUDIT.md).
+- Mainnet/testnet: near-genesis BIP heights; MWEB disabled; Litecoin grandfather/frozen IDs removed.
+- **Chain reset:** mainnet datadir must be wiped on seed + home node; height returns to **0** (genesis unchanged).
+- Release notes: [doc/release-notes-thoth.md](doc/release-notes-thoth.md#consensus-v2-thoth-mainnet--testnet).
+- Regtest: MWEB `NEVER_ACTIVE` by default; MWEB functional tests require `-vbparams` override.
+- Commit: `consensus: Thoth near-genesis BIP heights, disable MWEB (chain reset required)`.
+
+### Current mainnet state (2026-05-29, post–consensus v2)
 
 | Metric | Value |
 |--------|--------|
-| Best block height | **3** (genesis + 3 mined blocks) |
+| Best block height | **0** after operator reset (was ~3 pre-v2) |
+| Genesis hash | `3f2dc0f6…8784` *(unchanged)* |
 | Public seed | `addnode=152.239.115.145:19333` |
-| DNS seeds / fixed seeds | Disabled (manual `addnode` bootstrap) |
+| MWEB | Disabled on mainnet/testnet |
 
 ---
 
@@ -127,7 +137,7 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 
 - **Block explorer** — none deployed yet; needs indexer/API and web UI.
 - **Public network growth** — more independent nodes, DNS seeds or hardcoded seeds when stable.
-- **BIP activation heights review** — inventory done; see [doc/CONSENSUS-AUDIT.md](doc/CONSENSUS-AUDIT.md); `chainparams` patch pending maintainer decision.
+- **BIP / consensus v2** — implemented; operators must reset datadirs ([CONSENSUS-AUDIT.md](doc/CONSENSUS-AUDIT.md)).
 - **PoC / experiments** — keep proof-of-concept work (alternate ideas, tooling spikes) in a **separate branch or repo** so mainnet core stays minimal and reviewable.
 
 ---
