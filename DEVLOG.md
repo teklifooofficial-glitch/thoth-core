@@ -160,6 +160,12 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - RPC via env vars; `.env` gitignored. Blockbook deferred to Phase 3 prep.
 - Public HTTPS URL pending VPS deploy.
 
+### 2026-05-30 — Testnet explorer live
+
+- **URL:** http://152.239.115.145:8080/ (Phase 1a minimal RPC explorer on VPS).
+- Reads testnet RPC on `127.0.0.1:29332` only; no RPC exposed publicly.
+- [PROJECT-STATUS.md](PROJECT-STATUS.md) updated; README **Join testnet** links explorer.
+
 ### Current mainnet state (2026-05-29, consensus v2)
 
 | Metric | Value |
@@ -177,6 +183,7 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 |--------|--------|
 | Soak | **2026-05-30 → ~2026-06-29** |
 | Public seed | `addnode=152.239.115.145:29335` |
+| Explorer | http://152.239.115.145:8080/ |
 | Peers | **2** (home + VPS; week 0 log) |
 | Genesis hash | `439581a3…5651` (full hash in [TESTNET-JOIN.md](doc/TESTNET-JOIN.md)) |
 
@@ -184,7 +191,7 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 
 ## Pending
 
-- **Block explorer** — Phase 1a code in [contrib/thoth-explorer/](contrib/thoth-explorer/); HTTPS deploy pending.
+- **Block explorer** — testnet live at http://152.239.115.145:8080/; TLS optional.
 - **Public network growth** — more independent nodes, DNS seeds or hardcoded seeds when stable.
 - **BIP / consensus v2** — live on mainnet; migration complete (`0a45b1856`).
 - **PoC / experiments** — keep proof-of-concept work (alternate ideas, tooling spikes) in a **separate branch or repo** so mainnet core stays minimal and reviewable.

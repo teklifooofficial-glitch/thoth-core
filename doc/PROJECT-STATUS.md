@@ -58,6 +58,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 | Genesis hash | `439581a39f5f59930cf3e349b9aca7c483586160df898fa87b10d278c2515651` |
 | Known peers | **2** — home + VPS testnet seed (**synced**) |
 | Public seed | `addnode=152.239.115.145:29335` (P2P **29335**; RPC **29332** localhost only) |
+| Block explorer | http://152.239.115.145:8080/ ([contrib/thoth-explorer](../contrib/thoth-explorer/); HTTP, RPC not exposed) |
 | DNS / fixed seeds | Disabled; manual `addnode` bootstrap |
 | MWEB | **Disabled** |
 
@@ -81,7 +82,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 
 - **Build** from source on **Arch/CachyOS** and **Ubuntu 22.04 VPS** (`doc/build-unix.md`)
 - **Consensus v2** in `chainparams.cpp` — Segwit at 144, Taproot window 8064–101376, MWEB off
-- **Testnet seed** live at `152.239.115.145:29335`; **2 testnet peers** synced (home + VPS)
+- **Testnet explorer** live at http://152.239.115.145:8080/ (Phase 1a; TLS optional follow-up)
 - **Headless node** on VPS with systemd; **wallet** on Arch with BDB 4.8
 - **RPC mining:** `generatetoaddress` (coinbase must include height ≥ block 1 under v2)
 - **Two-node sync** on v2 mainnet (home + VPS seed peering verified)
@@ -94,7 +95,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 - **Very small network** — not suitable for production payments.
 - **MWEB disabled** — peg-in/out and extension blocks not available on mainnet/testnet.
 - **Regtest MWEB tests** need `-vbparams` override (default MWEB off).
-- **Explorer Phase 1a** code in [contrib/thoth-explorer/](../contrib/thoth-explorer/) — **public HTTPS URL pending** VPS deploy
+- **Explorer Phase 1a** deployed at http://152.239.115.145:8080/ (HTTP; HTTPS/nginx optional)
 - **Testnet soak** running since **2026-05-30** (target end ~2026-06-29)
 - **No exchange listing.**
 
@@ -103,7 +104,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 ## Next three actions (Phase 1)
 
 1. **Maintain testnet soak** through ~2026-06-29 — log peers weekly; no consensus incidents.
-2. **Deploy explorer Phase 1a** on VPS — nginx + TLS; document public URL in this file ([contrib/thoth-explorer/README.md](../contrib/thoth-explorer/README.md)).
+2. **Verify explorer accuracy** vs `thoth-cli -testnet` ([EXPLORER-PLAN.md](EXPLORER-PLAN.md) §7); optional TLS front-end.
 3. **Validate testnet mining guide** — legacy before block 144, `ttth1` after ([TESTNET-JOIN.md](TESTNET-JOIN.md) §6).
 
 ---
@@ -114,6 +115,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 - [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md)
 - [TESTNET-JOIN.md](TESTNET-JOIN.md)
 - [EXPLORER-PLAN.md](EXPLORER-PLAN.md)
+- [Testnet explorer](http://152.239.115.145:8080/)
 - [Join the network](../README.md#join-the-network)
 - [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
 - [WHITEPAPER.md](WHITEPAPER.md)

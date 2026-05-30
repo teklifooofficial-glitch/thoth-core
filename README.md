@@ -134,6 +134,8 @@ Sample `~/.thoth/thoth.conf` `[test]` block:
     ./src/thoth-cli -testnet getconnectioncount
     ./src/thoth-cli -testnet getblockchaininfo
 
+**Testnet block explorer:** http://152.239.115.145:8080/ ([contrib/thoth-explorer](contrib/thoth-explorer/))
+
 License
 -------
 
