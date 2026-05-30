@@ -166,6 +166,12 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - Reads testnet RPC on `127.0.0.1:29332` only; no RPC exposed publicly.
 - [PROJECT-STATUS.md](PROJECT-STATUS.md) updated; README **Join testnet** links explorer.
 
+### 2026-05-30 — Project landing page (Phase 1 outreach)
+
+- **`contrib/thoth-landing/`**: static `index.html` + CSS — status, docs links, network seeds, explorer link.
+- Deploy target: http://152.239.115.145/ (nginx port 80; separate from explorer :8080).
+- No RPC secrets; no exchange promises.
+
 ### Current mainnet state (2026-05-29, consensus v2)
 
 | Metric | Value |
@@ -184,6 +190,7 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 | Soak | **2026-05-30 → ~2026-06-29** |
 | Public seed | `addnode=152.239.115.145:29335` |
 | Explorer | http://152.239.115.145:8080/ |
+| Landing | http://152.239.115.145/ (static; deploy via nginx) |
 | Peers | **2** (home + VPS; week 0 log) |
 | Genesis hash | `439581a3…5651` (full hash in [TESTNET-JOIN.md](doc/TESTNET-JOIN.md)) |
 

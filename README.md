@@ -21,6 +21,16 @@ the Thoth Core software, see [https://thoth.org](https://thoth.org).
 > exchange.** See [ROADMAP.md](ROADMAP.md) and [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md)
 > for current network state and disclaimers.
 
+Official links
+--------------
+
+| Resource | URL |
+|----------|-----|
+| **Website (landing)** | http://152.239.115.145/ *(deploy [contrib/thoth-landing](contrib/thoth-landing/) on VPS nginx :80)* |
+| **GitHub** | https://github.com/teklifooofficial-glitch/thoth-core |
+| **Testnet explorer** | http://152.239.115.145:8080/ |
+| **Project status** | [doc/PROJECT-STATUS.md](doc/PROJECT-STATUS.md) |
+
 Quick start
 -----------
 

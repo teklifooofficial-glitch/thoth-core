@@ -59,6 +59,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 | Known peers | **2** — home + VPS testnet seed (**synced**) |
 | Public seed | `addnode=152.239.115.145:29335` (P2P **29335**; RPC **29332** localhost only) |
 | Block explorer | http://152.239.115.145:8080/ ([contrib/thoth-explorer](../contrib/thoth-explorer/); HTTP, RPC not exposed) |
+| Landing page | http://152.239.115.145/ ([contrib/thoth-landing](../contrib/thoth-landing/); nginx :80 when deployed) |
 | DNS / fixed seeds | Disabled; manual `addnode` bootstrap |
 | MWEB | **Disabled** |
 
@@ -83,6 +84,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 - **Build** from source on **Arch/CachyOS** and **Ubuntu 22.04 VPS** (`doc/build-unix.md`)
 - **Consensus v2** in `chainparams.cpp` — Segwit at 144, Taproot window 8064–101376, MWEB off
 - **Testnet explorer** live at http://152.239.115.145:8080/ (Phase 1a; TLS optional follow-up)
+- **Landing page** in repo ([contrib/thoth-landing](../contrib/thoth-landing/)); deploy at http://152.239.115.145/ (nginx :80)
 - **Headless node** on VPS with systemd; **wallet** on Arch with BDB 4.8
 - **RPC mining:** `generatetoaddress` (coinbase must include height ≥ block 1 under v2)
 - **Two-node sync** on v2 mainnet (home + VPS seed peering verified)
@@ -116,6 +118,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 - [TESTNET-JOIN.md](TESTNET-JOIN.md)
 - [EXPLORER-PLAN.md](EXPLORER-PLAN.md)
 - [Testnet explorer](http://152.239.115.145:8080/)
+- [Landing page](http://152.239.115.145/)
 - [Join the network](../README.md#join-the-network)
 - [LEGAL-NOTICE.md](LEGAL-NOTICE.md)
 - [WHITEPAPER.md](WHITEPAPER.md)
