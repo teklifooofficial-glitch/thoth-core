@@ -172,6 +172,12 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 - Deploy target: http://152.239.115.145/ (nginx port 80; separate from explorer :8080).
 - No RPC secrets; no exchange promises.
 
+### 2026-05-30 — Testnet node operator guide
+
+- **`doc/RUN-A-TESTNET-NODE.md`**: developer/hobbyist walkthrough (build, `[test]` config, seed, verify, optional mining).
+- README **Join testnet** and landing page link to the guide.
+- Phase 1 focus: recruit independent operators (≥10 node goal).
+
 ### Current mainnet state (2026-05-29, consensus v2)
 
 | Metric | Value |
@@ -199,7 +205,7 @@ Genesis coinbase message: *"Thoth blockchain - wisdom and knowledge for all - 20
 ## Pending
 
 - **Block explorer** — testnet live at http://152.239.115.145:8080/; TLS optional.
-- **Public network growth** — more independent nodes, DNS seeds or hardcoded seeds when stable.
+- **Public network growth** — operator onboarding via [RUN-A-TESTNET-NODE.md](doc/RUN-A-TESTNET-NODE.md); ≥10 testnet nodes goal.
 - **BIP / consensus v2** — live on mainnet; migration complete (`0a45b1856`).
 - **PoC / experiments** — keep proof-of-concept work (alternate ideas, tooling spikes) in a **separate branch or repo** so mainnet core stays minimal and reviewable.
 

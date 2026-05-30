@@ -105,9 +105,9 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 
 ## Next three actions (Phase 1)
 
-1. **Maintain testnet soak** through ~2026-06-29 — log peers weekly; no consensus incidents.
-2. **Verify explorer accuracy** vs `thoth-cli -testnet` ([EXPLORER-PLAN.md](EXPLORER-PLAN.md) §7); optional TLS front-end.
-3. **Validate testnet mining guide** — legacy before block 144, `ttth1` after ([TESTNET-JOIN.md](TESTNET-JOIN.md) §6).
+1. **Recruit testnet operators** — share [RUN-A-TESTNET-NODE.md](RUN-A-TESTNET-NODE.md); goal **≥10** independent peers ([PHASE1-PREP.md](PHASE1-PREP.md) §D).
+2. **Maintain testnet soak** through ~2026-06-29 — log peers weekly; no consensus incidents.
+3. **Verify explorer accuracy** vs `thoth-cli -testnet` ([EXPLORER-PLAN.md](EXPLORER-PLAN.md) §7); optional TLS front-end.
 
 ---
 
@@ -116,6 +116,7 @@ Testnet join guide: [TESTNET-JOIN.md](TESTNET-JOIN.md) — reset `~/.thoth/testn
 - [ROADMAP.md](../ROADMAP.md)
 - [CONSENSUS-AUDIT.md](CONSENSUS-AUDIT.md)
 - [TESTNET-JOIN.md](TESTNET-JOIN.md)
+- [RUN-A-TESTNET-NODE.md](RUN-A-TESTNET-NODE.md)
 - [EXPLORER-PLAN.md](EXPLORER-PLAN.md)
 - [Testnet explorer](http://152.239.115.145:8080/)
 - [Landing page](http://152.239.115.145/)

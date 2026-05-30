@@ -118,7 +118,10 @@ Join testnet
 -------------
 
 Thoth **testnet** uses datadir `~/.thoth/testnet4/`, consensus **v2** (same rules as mainnet),
-P2P **29335**, RPC **29332** (localhost only). Full guide: [doc/TESTNET-JOIN.md](doc/TESTNET-JOIN.md).
+P2P **29335**, RPC **29332** (localhost only).
+
+**Run a node (step-by-step):** [doc/RUN-A-TESTNET-NODE.md](doc/RUN-A-TESTNET-NODE.md)  
+**Reference:** [doc/TESTNET-JOIN.md](doc/TESTNET-JOIN.md)
 
 **Public testnet peer (seed):**
 
